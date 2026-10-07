@@ -1,3 +1,52 @@
+🎓 MINTA ACADEMY - Formation Pratique
+De Zéro à Business IA en Ligne - La Méthode Minta Services
+
+African Technology Solution | 100% Pratique | Bamako + En Ligne
+
+Offre Lancement: 25.000 FCFA au lieu de 75.000 FCFA (-67%) - 20 places seulement
+
+---
+
+ Ce que tu vas apprendre (6 Modules + 4 Bonus Business IA)
+
+MODULE 1: Domaine & Email Pro (Namecheap) (dans aapanel mailweb)
+- Acheter domaine .com .ml, configurer DNS, emails pro academy@, professorminta@
+- 
+MODULE 2: VPS & aaPanel (DigitalOcean)
+- Créer Droplet, installer aaPanel, configurer Mail Server, Webmail
+
+MODULE 3: Node.js & GitHub Deploy
+- Cloner Mande-IA, deploy, env variables
+
+MODULE 4: GitHub & Réseaux Pro
+- Optimiser profil Professor-minta, README pro, contribuer
+
+MODULE 5: IA Mande-IA Bambara/Français
+- Ollama local LLM, Djelia TTS, STT Bambara, dataset
+
+MODULE 6: Publier & Monétiser
+- Vendre formation, 10 modèles Business IA, WhatsApp Business
+
+ BONUS: 10 Modèles de Business IA Inclus
+1. Agence Site Vitrine IA 2. Chatbot Bambara pour entreprises 3. Service Email Pro 4. VPS Management 5. Traduction IA 6. Voice-over Bambara NLP 7. Formation en ligne 8. SaaS Local 9. Automatisation WhatsApp 10. Consulting Digital Sovereignty
+
+---
+
+📞 Inscription & Contact Pro
+
+- WhatsApp: +223 77 29 52 59
+- Email Academy: academy@mintaservices.com
+- Email CEO:professorminta@mintaservices.com
+- Site: https://mintaservices.com
+- Demo IA: https://ia.mintaservices.com
+- GitHub: github.com/Professor-minta/Minta-Academy
+
+100% en ligne + 1 meetup/mois à Bamako
+
+️ Tech Stack
+Node.js | aaPanel | DigitalOcean | Ollama | Open WebUI | Bambara NLP | Namecheap
+
+---
  Minta Academy (by Minta-Services)
 
 Welcome to the official repository of Minta Academy, an educational initiative founded by [Minta Services] dedicated to tech empowerment and digital sovereignty for youth in Mali 🇲🇱.
@@ -11,27 +60,5 @@ Cloud Infrastructure: Teaching how to register domains, manage Linux VPS nodes (
 Full-Stack Development: Guiding youth from basic JavaScript/Node.js to building responsive modern applications.
 Sovereign AI Deployment: Empowering students to deploy offline, privacy-first local LLMs (Ollama, Open WebUI) to beat internet connectivity barriers.
 Local Impact: Gathering community inputs to build a scalable Bambara linguistic engine (`bambara-phrases.json`).
-
-
-CO-FOUNDER WANTED (Lead Growth & Communication)
-As the sole technical founder, I engineer the stack, maintain Mande-IA, and build the infrastructure. I am now looking for a visionary female Co-Founder to join me and scale Minta Academy.
-
-Your Role:
-Ecosystem Growth: Drive the academy's strategy, community building, and public presence.
-Business & Strategy: Pitch the academy to local hubs, tech networks, and international partners.
-Operations:Co-manage student cohorts, launch digital growth campaigns, and coordinate events.
-
- Who you are:
- Passionate about tech education, digital inclusion, and youth empowerment in Africa.
- Strong communication, marketing, or business management background.
- Ready to build a high-impact tech school from the ground up.
-
 ---
-
- Join the Journey
-If you want to empower African youth and help shape the local digital ecosystem, let's connect!
-
-Founder: Issa Minta (Professor Minta)
-Email: Professorminta@gmail.com
-GitHub Profile: github.com/Professor-minta (https://github.com/Professor-minta/minta-academy) | https://github.com/professor-minta/mande-ia
-Main Platforms: https://mintaservices.com) | https://ia.mintaservices.com
+Fondé par Prof. Issa Minta - Full-Stack AI Engineer | Ségou/Bamako, Mali 
