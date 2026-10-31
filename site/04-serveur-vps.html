@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 4 : Ton serveur VPS sur DigitalOcean, Minta Academy</title>
+<meta name="description" content="Créer un serveur Linux dans le cloud, t&#39;y connecter avec ta clé SSH et le sécuriser.">
+<meta name="theme-color" content="#14213d">
+<meta property="og:title" content="Module 4 : Ton serveur VPS sur DigitalOcean, Minta Academy">
+<meta property="og:description" content="Créer un serveur Linux dans le cloud, t&#39;y connecter avec ta clé SSH et le sécuriser.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ma-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Cours</a><a href="entreprises.html">Entreprises</a><a href="https://github.com/Professor-minta/Minta-Academy" target="_blank" rel="noopener">GitHub</a></nav>
+  <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+</header>
+<main id="contenu">
+
+<div class="lesson-wrap">
+  <aside class="side" aria-label="Modules">
+    <p class="side-title">Les 10 modules</p>
+    <ol class="side-list"><li data-module="01-methode-securite"><a href="01-methode-securite.html"><span class="side-num">1</span>Méthode de travail et sécurité</a></li><li data-module="02-git-github"><a href="02-git-github.html"><span class="side-num">2</span>Git et GitHub</a></li><li data-module="03-domaines-dns"><a href="03-domaines-dns.html"><span class="side-num">3</span>Domaines et DNS</a></li><li data-module="04-serveur-vps"><a href="04-serveur-vps.html" aria-current="page"><span class="side-num">4</span>Ton serveur VPS sur DigitalOcean</a></li><li data-module="05-aapanel"><a href="05-aapanel.html"><span class="side-num">5</span>aaPanel, sites web et HTTPS</a></li><li data-module="06-nodejs"><a href="06-nodejs.html"><span class="side-num">6</span>Node.js, de ton ordinateur au serveur</a></li><li data-module="07-python-automatisation"><a href="07-python-automatisation.html"><span class="side-num">7</span>Python et automatisation</a></li><li data-module="08-ollama-mande-ia"><a href="08-ollama-mande-ia.html"><span class="side-num">8</span>IA locale avec Ollama et Mande-IA v3</a></li><li data-module="09-open-webui"><a href="09-open-webui.html"><span class="side-num">9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a></li><li data-module="10-projet-final"><a href="10-projet-final.html"><span class="side-num">10</span>Construire et présenter ton projet</a></li></ol>
+  </aside>
+  <article class="lesson" data-module="04-serveur-vps">
+    <header class="lesson-head">
+      <p class="lesson-meta">Module 4 sur 10, infrastructure, environ 3 heures</p>
+      <h1>Ton serveur VPS sur DigitalOcean</h1>
+      <p class="lesson-goal">Créer un serveur Linux dans le cloud, t&#39;y connecter avec ta clé SSH et le sécuriser.</p>
+      <details class="toc"><summary>Dans ce module</summary><ol><li><a href="#ce-qu-39-est-un-vps">Ce qu&#39;est un VPS</a></li><li><a href="#1-creer-le-serveur-droplet">1. Créer le serveur (Droplet)</a></li><li><a href="#2-premiere-connexion">2. Première connexion</a></li><li><a href="#3-creer-ton-utilisateur">3. Créer ton utilisateur</a></li><li><a href="#4-le-pare-feu">4. Le pare-feu</a></li><li><a href="#5-interdire-la-connexion-par-mot-de-passe">5. Interdire la connexion par mot de passe</a></li><li><a href="#6-les-mises-a-jour-de-securite-automatiques">6. Les mises à jour de sécurité automatiques</a></li><li><a href="#7-surveiller-ton-serveur">7. Surveiller ton serveur</a></li><li><a href="#8-les-sauvegardes">8. Les sauvegardes</a></li><li><a href="#ne-fais-jamais-ca">Ne fais jamais ça</a></li><li><a href="#exercice">Exercice</a></li><li><a href="#verifie-que-tu-sais">Vérifie que tu sais</a></li></ol></details>
+    </header>
+    <div class="prose">
+<h2 id="ce-qu-39-est-un-vps">Ce qu&#39;est un VPS</h2>
+<p>Un <strong>VPS</strong> (serveur privé virtuel) est un ordinateur Linux qui tourne jour et nuit dans un centre de données, avec une adresse IP publique. C&#39;est là que vivront ton site, ton application et ton API. Mande-IA tourne sur un VPS DigitalOcean.</p>
+<h2 id="1-creer-le-serveur-droplet">1. Créer le serveur (Droplet)</h2>
+<ol>
+<li>Crée un compte sur <a href="https://www.digitalocean.com" target="_blank" rel="noopener">digitalocean.com</a> et active la 2FA.</li>
+<li>Clique sur <strong>Create → Droplets</strong>.</li>
+<li><strong>Région</strong> : choisis la plus proche de tes utilisateurs, Francfort, Londres ou Amsterdam pour l&#39;Afrique de l&#39;Ouest.</li>
+<li><strong>Système</strong> : Ubuntu, la dernière version <strong>LTS</strong> (support long).</li>
+<li><strong>Taille</strong> : au moins <strong>1 Go de RAM</strong> pour aaPanel et un site. Pour faire tourner une IA locale sur le serveur, il faut beaucoup plus (8 Go ou plus).</li>
+<li><strong>Authentification</strong> : choisis <strong>SSH Key</strong> et colle ta clé publique du module 1. Évite le mot de passe.</li>
+<li>Donne un nom clair (<code>minta-prod</code>) et crée le Droplet. Note son <strong>adresse IP</strong>.</li>
+</ol>
+<h2 id="2-premiere-connexion">2. Première connexion</h2>
+<div class="code"><pre><code data-lang="bash">ssh root@ADRESSE_IP</code></pre><button class="copy" type="button">Copier</button></div>
+<p>À la première connexion, tape <code>yes</code> pour accepter l&#39;empreinte du serveur. Tu es maintenant aux commandes d&#39;un serveur Linux.</p>
+<p>Mets tout à jour :</p>
+<div class="code"><pre><code data-lang="bash">apt update &amp;&amp; apt upgrade -y</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="3-creer-ton-utilisateur">3. Créer ton utilisateur</h2>
+<p>Travailler toujours en <code>root</code> est dangereux : une faute de frappe peut tout effacer. Crée ton utilisateur avec les droits d&#39;administration :</p>
+<div class="code"><pre><code data-lang="bash">adduser minta
+usermod -aG sudo minta
+rsync --archive --chown=minta:minta ~/.ssh /home/minta</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Ouvre un <strong>deuxième terminal</strong> et vérifie que tu peux entrer : <code>ssh minta@ADRESSE_IP</code>. Garde le premier ouvert tant que ce n&#39;est pas confirmé.</p>
+<h2 id="4-le-pare-feu">4. Le pare-feu</h2>
+<div class="code"><pre><code data-lang="bash">sudo ufw allow OpenSSH
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable
+sudo ufw status</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Ports 80 et 443 : le web (HTTP et HTTPS). Chaque nouveau service qui doit être joignable (par exemple le port du panneau aaPanel) devra être ouvert ici.</p>
+<h2 id="5-interdire-la-connexion-par-mot-de-passe">5. Interdire la connexion par mot de passe</h2>
+<p>Les robots essaient des milliers de mots de passe par jour sur chaque serveur. Avec les clés SSH, on peut fermer cette porte :</p>
+<div class="code"><pre><code data-lang="bash">sudo nano /etc/ssh/sshd_config</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Mets ces deux lignes (enlève le <code>#</code> devant si besoin) :</p>
+<div class="code"><pre><code data-lang="text">PasswordAuthentication no
+PermitRootLogin prohibit-password</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Enregistre (Ctrl+O, Entrée, Ctrl+X) puis redémarre SSH :</p>
+<div class="code"><pre><code data-lang="bash">sudo systemctl restart ssh</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Sur certaines images Ubuntu, un fichier du dossier <code>/etc/ssh/sshd_config.d/</code> remet <code>PasswordAuthentication yes</code> et passe avant ton réglage. Vérifie le réglage réellement appliqué :</p>
+<div class="code"><pre><code data-lang="bash">sudo sshd -T | grep -i passwordauthentication</code></pre><button class="copy" type="button">Copier</button></div>
+<p>La réponse doit être <code>passwordauthentication no</code>. Sinon, ouvre les fichiers de <code>/etc/ssh/sshd_config.d/</code>, mets la même ligne à <code>no</code>, et redémarre SSH.</p>
+<p>Teste une nouvelle connexion <strong>avant</strong> de fermer ta session actuelle.</p>
+<h2 id="6-les-mises-a-jour-de-securite-automatiques">6. Les mises à jour de sécurité automatiques</h2>
+<div class="code"><pre><code data-lang="bash">sudo apt install -y unattended-upgrades
+sudo dpkg-reconfigure -plow unattended-upgrades</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="7-surveiller-ton-serveur">7. Surveiller ton serveur</h2>
+<div class="code"><pre><code data-lang="bash">df -h          # espace disque
+free -h        # mémoire
+htop           # processus (q pour quitter)
+uptime         # depuis quand le serveur tourne</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="8-les-sauvegardes">8. Les sauvegardes</h2>
+<p>Dans DigitalOcean, active les <strong>Backups</strong> ou fais un <strong>Snapshot</strong> avant chaque gros changement. Un snapshot coûte un peu chaque mois : supprime les anciens dont tu n&#39;as plus besoin.</p>
+<h2 id="ne-fais-jamais-ca">Ne fais jamais ça</h2>
+<ul>
+<li><strong>Mettre à niveau tout le système</strong> (<code>do-release-upgrade</code>) sur un serveur en production sans snapshot ni plan de retour.</li>
+<li><strong>Partager une capture</strong> qui montre l&#39;adresse IP et le port du panneau d&#39;administration.</li>
+<li><strong>Désactiver le pare-feu</strong> « pour voir si ça marche » et oublier de le réactiver.</li>
+</ul>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Crée un Droplet Ubuntu LTS avec ta clé SSH.</li>
+<li>Crée l&#39;utilisateur <code>minta</code>, active le pare-feu et interdis les mots de passe.</li>
+<li>Vérifie que tu peux te connecter avec <code>ssh minta@ADRESSE_IP</code>.</li>
+<li>Fais un snapshot nommé <code>base-securisee</code>.</li>
+<li>Note les étapes et les problèmes rencontrés dans <code>notes/module-04.md</code>, <strong>sans l&#39;adresse IP</strong>.</li>
+</ol>
+<h2 id="verifie-que-tu-sais">Vérifie que tu sais</h2>
+<ul>
+<li>Pourquoi créer un utilisateur au lieu de rester en <code>root</code> ?</li>
+<li>Que se passe-t-il si tu actives le pare-feu sans autoriser OpenSSH ?</li>
+<li>Dans quel ordre tester un changement de configuration SSH ?</li>
+</ul>
+
+    </div>
+    <div class="done-box">
+      <button class="btn btn-done" type="button" data-done="04-serveur-vps" aria-pressed="false">J'ai terminé ce module</button>
+      <p>Fais l'exercice avant de cocher : c'est lui qui t'apprend le plus.</p>
+    </div>
+    <nav class="pager" aria-label="Modules précédent et suivant">
+      <a class="pager-prev" href="03-domaines-dns.html"><span>Module 3</span>Domaines et DNS</a>
+      <a class="pager-next" href="05-aapanel.html"><span>Module 5</span>aaPanel, sites web et HTTPS</a>
+    </nav>
+  </article>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
+    <p><a href="https://wa.me/22377295259?text=Bonjour%2C%20j%E2%80%99ai%20une%20question%20sur%20Minta%20Academy." target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:academy@mintaservices.com">academy@mintaservices.com</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
+  </div>
+</footer>
+<script src="assets/app.js?v=1" defer></script>
+</body>
+</html>

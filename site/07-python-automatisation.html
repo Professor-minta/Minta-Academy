@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 7 : Python et automatisation, Minta Academy</title>
+<meta name="description" content="Écrire des petits programmes Python qui font le travail répétitif à ta place, puis les lancer tout seuls sur le serveur.">
+<meta name="theme-color" content="#14213d">
+<meta property="og:title" content="Module 7 : Python et automatisation, Minta Academy">
+<meta property="og:description" content="Écrire des petits programmes Python qui font le travail répétitif à ta place, puis les lancer tout seuls sur le serveur.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ma-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Cours</a><a href="entreprises.html">Entreprises</a><a href="https://github.com/Professor-minta/Minta-Academy" target="_blank" rel="noopener">GitHub</a></nav>
+  <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+</header>
+<main id="contenu">
+
+<div class="lesson-wrap">
+  <aside class="side" aria-label="Modules">
+    <p class="side-title">Les 10 modules</p>
+    <ol class="side-list"><li data-module="01-methode-securite"><a href="01-methode-securite.html"><span class="side-num">1</span>Méthode de travail et sécurité</a></li><li data-module="02-git-github"><a href="02-git-github.html"><span class="side-num">2</span>Git et GitHub</a></li><li data-module="03-domaines-dns"><a href="03-domaines-dns.html"><span class="side-num">3</span>Domaines et DNS</a></li><li data-module="04-serveur-vps"><a href="04-serveur-vps.html"><span class="side-num">4</span>Ton serveur VPS sur DigitalOcean</a></li><li data-module="05-aapanel"><a href="05-aapanel.html"><span class="side-num">5</span>aaPanel, sites web et HTTPS</a></li><li data-module="06-nodejs"><a href="06-nodejs.html"><span class="side-num">6</span>Node.js, de ton ordinateur au serveur</a></li><li data-module="07-python-automatisation"><a href="07-python-automatisation.html" aria-current="page"><span class="side-num">7</span>Python et automatisation</a></li><li data-module="08-ollama-mande-ia"><a href="08-ollama-mande-ia.html"><span class="side-num">8</span>IA locale avec Ollama et Mande-IA v3</a></li><li data-module="09-open-webui"><a href="09-open-webui.html"><span class="side-num">9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a></li><li data-module="10-projet-final"><a href="10-projet-final.html"><span class="side-num">10</span>Construire et présenter ton projet</a></li></ol>
+  </aside>
+  <article class="lesson" data-module="07-python-automatisation">
+    <header class="lesson-head">
+      <p class="lesson-meta">Module 7 sur 10, développement, environ 3 heures</p>
+      <h1>Python et automatisation</h1>
+      <p class="lesson-goal">Écrire des petits programmes Python qui font le travail répétitif à ta place, puis les lancer tout seuls sur le serveur.</p>
+      <details class="toc"><summary>Dans ce module</summary><ol><li><a href="#pourquoi-python">Pourquoi Python</a></li><li><a href="#1-installer-python">1. Installer Python</a></li><li><a href="#2-un-environnement-par-projet">2. Un environnement par projet</a></li><li><a href="#3-les-bases-en-10-lignes">3. Les bases en 10 lignes</a></li><li><a href="#4-script-1-sauvegarder-un-dossier-chaque-jour">4. Script 1 : sauvegarder un dossier chaque jour</a></li><li><a href="#5-script-2-verifier-que-tes-sites-repondent">5. Script 2 : vérifier que tes sites répondent</a></li><li><a href="#6-script-3-calculer-des-totaux-dans-un-fichier-csv">6. Script 3 : calculer des totaux dans un fichier CSV</a></li><li><a href="#7-lancer-un-script-tout-seul-sur-le-serveur">7. Lancer un script tout seul sur le serveur</a></li><li><a href="#bonnes-pratiques">Bonnes pratiques</a></li><li><a href="#exercice">Exercice</a></li><li><a href="#verifie-que-tu-sais">Vérifie que tu sais</a></li></ol></details>
+    </header>
+    <div class="prose">
+<h2 id="pourquoi-python">Pourquoi Python</h2>
+<p>Python se lit presque comme du français et sert partout : administration de serveurs, traitement de fichiers Excel ou CSV, données, intelligence artificielle. Un script de 20 lignes peut t&#39;éviter une heure de travail chaque semaine.</p>
+<h2 id="1-installer-python">1. Installer Python</h2>
+<ul>
+<li><strong>Windows</strong> : télécharge Python 3.12 sur <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org</a>. Pendant l&#39;installation, <strong>coche « Add python.exe to PATH »</strong>.</li>
+<li><strong>Ubuntu</strong> : Python 3 est déjà installé. Ajoute les outils : <code>sudo apt install -y python3-venv python3-pip</code></li>
+</ul>
+<p>Vérifie :</p>
+<div class="code"><pre><code data-lang="bash">python --version</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Sur Linux, la commande s&#39;appelle souvent <code>python3</code>.</p>
+<h2 id="2-un-environnement-par-projet">2. Un environnement par projet</h2>
+<p>Un <strong>environnement virtuel</strong> garde les bibliothèques d&#39;un projet séparées des autres.</p>
+<div class="code"><pre><code data-lang="bash">mkdir automatisation &amp;&amp; cd automatisation
+python -m venv .venv</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Active-le :</p>
+<ul>
+<li>Windows (PowerShell) : <code>.venv\Scripts\Activate.ps1</code></li>
+<li>Linux ou macOS : <code>source .venv/bin/activate</code></li>
+</ul>
+<p>Installe une bibliothèque :</p>
+<div class="code"><pre><code data-lang="bash">pip install requests</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Ajoute <code>.venv/</code> à ton <code>.gitignore</code>.</p>
+<h2 id="3-les-bases-en-10-lignes">3. Les bases en 10 lignes</h2>
+<div class="code"><pre><code data-lang="python">nom = &quot;Awa&quot;
+age = 22
+villes = [&quot;Bamako&quot;, &quot;Ségou&quot;, &quot;Sikasso&quot;]
+
+print(f&quot;I ni ce {nom}, tu as {age} ans.&quot;)
+for ville in villes:
+    if ville == &quot;Ségou&quot;:
+        print(ville, &quot;: la cité des balanzans&quot;)
+    else:
+        print(ville)</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="4-script-1-sauvegarder-un-dossier-chaque-jour">4. Script 1 : sauvegarder un dossier chaque jour</h2>
+<p><code>sauvegarde.py</code> crée une archive datée et garde seulement les 7 dernières :</p>
+<div class="code"><pre><code data-lang="python">import shutil
+from datetime import datetime
+from pathlib import Path
+
+SOURCE = Path(&quot;/www/wwwroot/mondomaine.com&quot;)
+DESTINATION = Path(&quot;/www/backup/sites&quot;)
+A_GARDER = 7
+
+DESTINATION.mkdir(parents=True, exist_ok=True)
+nom = DESTINATION / f&quot;site-{datetime.now():%Y-%m-%d}&quot;
+shutil.make_archive(str(nom), &quot;zip&quot;, SOURCE)
+print(&quot;Sauvegarde créée :&quot;, nom.with_suffix(&quot;.zip&quot;))
+
+archives = sorted(DESTINATION.glob(&quot;site-*.zip&quot;))
+for ancienne in archives[:-A_GARDER]:
+    ancienne.unlink()
+    print(&quot;Supprimée :&quot;, ancienne.name)</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="5-script-2-verifier-que-tes-sites-repondent">5. Script 2 : vérifier que tes sites répondent</h2>
+<p><code>surveille.py</code> :</p>
+<div class="code"><pre><code data-lang="python">import requests
+
+SITES = [
+    &quot;https://mintaservices.com&quot;,
+    &quot;https://ia.mintaservices.com&quot;,
+]
+
+for url in SITES:
+    try:
+        reponse = requests.get(url, timeout=15)
+        etat = &quot;OK&quot; if reponse.status_code == 200 else f&quot;PROBLÈME ({reponse.status_code})&quot;
+    except requests.RequestException as erreur:
+        etat = f&quot;INJOIGNABLE ({erreur.__class__.__name__})&quot;
+    print(f&quot;{etat:30} {url}&quot;)</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="6-script-3-calculer-des-totaux-dans-un-fichier-csv">6. Script 3 : calculer des totaux dans un fichier CSV</h2>
+<p>Un fichier <code>ventes.csv</code> exporté depuis Excel :</p>
+<div class="code"><pre><code data-lang="text">date,produit,quantite,prix
+2026-10-01,Savon,10,250
+2026-10-01,Huile,3,1500
+2026-10-02,Savon,4,250</code></pre><button class="copy" type="button">Copier</button></div>
+<p><code>ventes.py</code> :</p>
+<div class="code"><pre><code data-lang="python">import csv
+from collections import defaultdict
+
+totaux = defaultdict(int)
+with open(&quot;ventes.csv&quot;, encoding=&quot;utf-8&quot;) as fichier:
+    for ligne in csv.DictReader(fichier):
+        totaux[ligne[&quot;produit&quot;]] += int(ligne[&quot;quantite&quot;]) * int(ligne[&quot;prix&quot;])
+
+for produit, total in sorted(totaux.items(), key=lambda x: -x[1]):
+    print(f&quot;{produit:10} {total:&gt;10,} FCFA&quot;.replace(&quot;,&quot;, &quot; &quot;))
+print(f&quot;{&#39;TOTAL&#39;:10} {sum(totaux.values()):&gt;10,} FCFA&quot;.replace(&quot;,&quot;, &quot; &quot;))</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="7-lancer-un-script-tout-seul-sur-le-serveur">7. Lancer un script tout seul sur le serveur</h2>
+<p>Copie tes scripts dans <code>/www/wwwroot/scripts</code>, puis dans aaPanel : <strong>Cron → Add task</strong></p>
+<div class="table"><table><thead><tr><th>Réglage</th><th>Valeur</th></tr></thead><tbody><tr><td>Type</td><td>Shell Script</td></tr>
+<tr><td>Période</td><td>Tous les jours, 2 h du matin</td></tr>
+<tr><td>Script</td><td><code>cd /www/wwwroot/scripts &amp;&amp; /usr/bin/python3 sauvegarde.py &gt;&gt; sauvegarde.log 2&gt;&amp;1</code></td></tr></tbody></table></div>
+<p>Le <code>&gt;&gt; sauvegarde.log 2&gt;&amp;1</code> garde la trace de chaque exécution, avec les erreurs.</p>
+<p>Sans aaPanel, la même chose se fait avec <code>crontab -e</code> :</p>
+<div class="code"><pre><code data-lang="text">0 2 * * * cd /www/wwwroot/scripts &amp;&amp; /usr/bin/python3 sauvegarde.py &gt;&gt; sauvegarde.log 2&gt;&amp;1</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="bonnes-pratiques">Bonnes pratiques</h2>
+<ul>
+<li>Les chemins, adresses et réglages <strong>en haut du script</strong>, en MAJUSCULES : on les change sans chercher dans le code.</li>
+<li>Les mots de passe dans des variables d&#39;environnement, jamais dans le script.</li>
+<li>Un script qui supprime des fichiers se teste d&#39;abord sur une <strong>copie</strong>.</li>
+</ul>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Installe Python et crée un environnement virtuel.</li>
+<li>Fais tourner les trois scripts sur ton ordinateur (adapte les chemins).</li>
+<li>Ajoute à <code>surveille.py</code> une ligne qui écrit le résultat dans <code>surveille.log</code> avec la date.</li>
+<li>Programme <code>surveille.py</code> toutes les heures sur ton serveur avec aaPanel.</li>
+</ol>
+<h2 id="verifie-que-tu-sais">Vérifie que tu sais</h2>
+<ul>
+<li>À quoi sert un environnement virtuel ?</li>
+<li>Où regardes-tu si une tâche Cron ne fait rien ?</li>
+<li>Pourquoi tester un script de suppression sur une copie ?</li>
+</ul>
+
+    </div>
+    <div class="done-box">
+      <button class="btn btn-done" type="button" data-done="07-python-automatisation" aria-pressed="false">J'ai terminé ce module</button>
+      <p>Fais l'exercice avant de cocher : c'est lui qui t'apprend le plus.</p>
+    </div>
+    <nav class="pager" aria-label="Modules précédent et suivant">
+      <a class="pager-prev" href="06-nodejs.html"><span>Module 6</span>Node.js, de ton ordinateur au serveur</a>
+      <a class="pager-next" href="08-ollama-mande-ia.html"><span>Module 8</span>IA locale avec Ollama et Mande-IA v3</a>
+    </nav>
+  </article>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
+    <p><a href="https://wa.me/22377295259?text=Bonjour%2C%20j%E2%80%99ai%20une%20question%20sur%20Minta%20Academy." target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:academy@mintaservices.com">academy@mintaservices.com</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
+  </div>
+</footer>
+<script src="assets/app.js?v=1" defer></script>
+</body>
+</html>

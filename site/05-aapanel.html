@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 5 : aaPanel, sites web et HTTPS, Minta Academy</title>
+<meta name="description" content="Installer aaPanel, le sécuriser, mettre un site en ligne avec son certificat HTTPS.">
+<meta name="theme-color" content="#14213d">
+<meta property="og:title" content="Module 5 : aaPanel, sites web et HTTPS, Minta Academy">
+<meta property="og:description" content="Installer aaPanel, le sécuriser, mettre un site en ligne avec son certificat HTTPS.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ma-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Cours</a><a href="entreprises.html">Entreprises</a><a href="https://github.com/Professor-minta/Minta-Academy" target="_blank" rel="noopener">GitHub</a></nav>
+  <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+</header>
+<main id="contenu">
+
+<div class="lesson-wrap">
+  <aside class="side" aria-label="Modules">
+    <p class="side-title">Les 10 modules</p>
+    <ol class="side-list"><li data-module="01-methode-securite"><a href="01-methode-securite.html"><span class="side-num">1</span>Méthode de travail et sécurité</a></li><li data-module="02-git-github"><a href="02-git-github.html"><span class="side-num">2</span>Git et GitHub</a></li><li data-module="03-domaines-dns"><a href="03-domaines-dns.html"><span class="side-num">3</span>Domaines et DNS</a></li><li data-module="04-serveur-vps"><a href="04-serveur-vps.html"><span class="side-num">4</span>Ton serveur VPS sur DigitalOcean</a></li><li data-module="05-aapanel"><a href="05-aapanel.html" aria-current="page"><span class="side-num">5</span>aaPanel, sites web et HTTPS</a></li><li data-module="06-nodejs"><a href="06-nodejs.html"><span class="side-num">6</span>Node.js, de ton ordinateur au serveur</a></li><li data-module="07-python-automatisation"><a href="07-python-automatisation.html"><span class="side-num">7</span>Python et automatisation</a></li><li data-module="08-ollama-mande-ia"><a href="08-ollama-mande-ia.html"><span class="side-num">8</span>IA locale avec Ollama et Mande-IA v3</a></li><li data-module="09-open-webui"><a href="09-open-webui.html"><span class="side-num">9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a></li><li data-module="10-projet-final"><a href="10-projet-final.html"><span class="side-num">10</span>Construire et présenter ton projet</a></li></ol>
+  </aside>
+  <article class="lesson" data-module="05-aapanel">
+    <header class="lesson-head">
+      <p class="lesson-meta">Module 5 sur 10, infrastructure, environ 3 heures</p>
+      <h1>aaPanel, sites web et HTTPS</h1>
+      <p class="lesson-goal">Installer aaPanel, le sécuriser, mettre un site en ligne avec son certificat HTTPS.</p>
+      <details class="toc"><summary>Dans ce module</summary><ol><li><a href="#ce-qu-39-est-aapanel">Ce qu&#39;est aaPanel</a></li><li><a href="#1-installer-aapanel">1. Installer aaPanel</a></li><li><a href="#2-securiser-aapanel-des-la-premiere-connexion">2. Sécuriser aaPanel dès la première connexion</a></li><li><a href="#3-installer-le-serveur-web">3. Installer le serveur web</a></li><li><a href="#4-mettre-un-site-en-ligne">4. Mettre un site en ligne</a></li><li><a href="#5-le-https-avec-let-39-s-encrypt">5. Le HTTPS avec Let&#39;s Encrypt</a></li><li><a href="#6-les-autres-outils-utiles">6. Les autres outils utiles</a></li><li><a href="#erreurs-frequentes">Erreurs fréquentes</a></li><li><a href="#exercice">Exercice</a></li><li><a href="#verifie-que-tu-sais">Vérifie que tu sais</a></li></ol></details>
+    </header>
+    <div class="prose">
+<h2 id="ce-qu-39-est-aapanel">Ce qu&#39;est aaPanel</h2>
+<p>aaPanel est un panneau d&#39;administration gratuit : il gère depuis ton navigateur les sites, Nginx, les bases de données, les certificats SSL, les tâches planifiées et les applications Node.js. Tout ce que tu fais dans aaPanel, tu pourrais le faire en ligne de commande, mais aaPanel va plus vite et évite beaucoup d&#39;erreurs.</p>
+<h2 id="1-installer-aapanel">1. Installer aaPanel</h2>
+<p>Connecte-toi à ton serveur en <code>root</code>, puis copie la commande d&#39;installation <strong>depuis la page officielle</strong> <a href="https://www.aapanel.com/new/download.html" target="_blank" rel="noopener">aapanel.com/new/download.html</a>. Au moment où ce cours est écrit, elle est :</p>
+<div class="code"><pre><code data-lang="bash">URL=https://www.aapanel.com/script/install_panel_en.sh &amp;&amp; if [ -f /usr/bin/curl ];then curl -ksSO $URL ;else wget --no-check-certificate -O install_panel_en.sh $URL;fi;bash install_panel_en.sh</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Ne copie jamais une commande d&#39;installation depuis un site inconnu ou une vidéo : elle s&#39;exécute avec tous les droits sur ton serveur.</p>
+<p>À la fin, aaPanel affiche une <strong>adresse</strong> (avec un port et un chemin secret), un <strong>nom d&#39;utilisateur</strong> et un <strong>mot de passe</strong>. Copie-les dans ton gestionnaire de mots de passe.</p>
+<p>Si tu as activé le pare-feu au module 4, ouvre le port du panneau :</p>
+<div class="code"><pre><code data-lang="bash">sudo ufw allow PORT_DU_PANNEAU/tcp</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="2-securiser-aapanel-des-la-premiere-connexion">2. Sécuriser aaPanel dès la première connexion</h2>
+<p>Dans <strong>Settings</strong> :</p>
+<ol>
+<li><strong>Change le nom d&#39;utilisateur et le mot de passe</strong> proposés.</li>
+<li><strong>Change le port</strong> du panneau pour un port peu courant, et garde le <strong>chemin de sécurité</strong> (security entrance).</li>
+<li><strong>Active l&#39;authentification à deux facteurs</strong> (Google Authenticator).</li>
+<li><strong>Active le SSL du panneau</strong> pour que la connexion à aaPanel soit chiffrée.</li>
+<li><strong>Ne partage jamais</strong> l&#39;adresse complète du panneau ni une capture qui la montre.</li>
+</ol>
+<h2 id="3-installer-le-serveur-web">3. Installer le serveur web</h2>
+<p>aaPanel propose d&#39;installer un ensemble de logiciels. Pour ce cours, choisis <strong>LNMP</strong> : <strong>Nginx</strong>, <strong>MySQL</strong> et <strong>PHP</strong>. Prends les versions recommandées et laisse l&#39;installation se terminer (10 à 20 minutes).</p>
+<h2 id="4-mettre-un-site-en-ligne">4. Mettre un site en ligne</h2>
+<ol>
+<li><strong>Website → Add site</strong>.</li>
+<li><strong>Domain</strong> : <code>mondomaine.com</code> et <code>www.mondomaine.com</code> (le DNS doit déjà pointer vers le serveur, module 3).</li>
+<li>aaPanel crée le dossier <code>/www/wwwroot/mondomaine.com</code>.</li>
+<li>Ouvre <strong>Files</strong>, va dans ce dossier et remplace <code>index.html</code> par ta page :</li>
+</ol>
+<div class="code"><pre><code data-lang="html">&lt;!doctype html&gt;
+&lt;html lang=&quot;fr&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Mon premier site&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;I ni ce !&lt;/h1&gt;
+  &lt;p&gt;Ce site tourne sur mon propre serveur.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Ouvre <code>http://mondomaine.com</code> : ta page s&#39;affiche.</p>
+<h2 id="5-le-https-avec-let-39-s-encrypt">5. Le HTTPS avec Let&#39;s Encrypt</h2>
+<ol>
+<li>Dans la liste des sites, clique sur ton site, puis <strong>SSL</strong>.</li>
+<li>Choisis <strong>Let&#39;s Encrypt</strong>, coche les deux domaines, valide.</li>
+<li>Active <strong>Force HTTPS</strong>.</li>
+</ol>
+<p>Le certificat est gratuit et se renouvelle tout seul. Le cadenas apparaît dans le navigateur.</p>
+<h2 id="6-les-autres-outils-utiles">6. Les autres outils utiles</h2>
+<ul>
+<li><strong>Databases</strong> : créer une base MySQL et son utilisateur pour une application.</li>
+<li><strong>Cron</strong> : lancer une tâche à heure fixe (sauvegarde, script Python du module 7).</li>
+<li><strong>Logs</strong> : comprendre une erreur, avec <strong>Website → Logs</strong> pour un site.</li>
+<li><strong>Security</strong> : voir les ports ouverts et bloquer une adresse qui attaque.</li>
+<li><strong>Terminal</strong> : un terminal du serveur directement dans le navigateur.</li>
+</ul>
+<h2 id="erreurs-frequentes">Erreurs fréquentes</h2>
+<ul>
+<li><strong>« Site non trouvé » ou page par défaut</strong> : le DNS ne pointe pas encore vers le serveur. Vérifie avec <code>nslookup</code>.</li>
+<li><strong>Let&#39;s Encrypt refuse</strong> : le domaine ne pointe pas vers ce serveur, ou le port 80 est fermé.</li>
+<li><strong>Panneau inaccessible</strong> : le port du panneau n&#39;est pas ouvert dans le pare-feu.</li>
+</ul>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Installe aaPanel et applique les 5 réglages de sécurité.</li>
+<li>Installe LNMP.</li>
+<li>Mets en ligne une page <code>index.html</code> à ton nom sur ton domaine, avec HTTPS.</li>
+<li>Note dans <code>notes/module-05.md</code> ce que fait chaque menu d&#39;aaPanel que tu as utilisé.</li>
+</ol>
+<h2 id="verifie-que-tu-sais">Vérifie que tu sais</h2>
+<ul>
+<li>Pourquoi copier la commande d&#39;installation uniquement depuis le site officiel ?</li>
+<li>Quelles sont les deux conditions pour obtenir un certificat Let&#39;s Encrypt ?</li>
+<li>Où se trouvent les fichiers de ton site sur le serveur ?</li>
+</ul>
+
+    </div>
+    <div class="done-box">
+      <button class="btn btn-done" type="button" data-done="05-aapanel" aria-pressed="false">J'ai terminé ce module</button>
+      <p>Fais l'exercice avant de cocher : c'est lui qui t'apprend le plus.</p>
+    </div>
+    <nav class="pager" aria-label="Modules précédent et suivant">
+      <a class="pager-prev" href="04-serveur-vps.html"><span>Module 4</span>Ton serveur VPS sur DigitalOcean</a>
+      <a class="pager-next" href="06-nodejs.html"><span>Module 6</span>Node.js, de ton ordinateur au serveur</a>
+    </nav>
+  </article>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
+    <p><a href="https://wa.me/22377295259?text=Bonjour%2C%20j%E2%80%99ai%20une%20question%20sur%20Minta%20Academy." target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:academy@mintaservices.com">academy@mintaservices.com</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
+  </div>
+</footer>
+<script src="assets/app.js?v=1" defer></script>
+</body>
+</html>

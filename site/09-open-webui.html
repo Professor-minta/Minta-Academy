@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 9 : Open WebUI, une IA hors ligne pour toute l&#39;équipe, Minta Academy</title>
+<meta name="description" content="Donner à Mande-IA une interface de discussion moderne dans le navigateur, utilisable sans internet par toute une équipe.">
+<meta name="theme-color" content="#14213d">
+<meta property="og:title" content="Module 9 : Open WebUI, une IA hors ligne pour toute l&#39;équipe, Minta Academy">
+<meta property="og:description" content="Donner à Mande-IA une interface de discussion moderne dans le navigateur, utilisable sans internet par toute une équipe.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ma-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Cours</a><a href="entreprises.html">Entreprises</a><a href="https://github.com/Professor-minta/Minta-Academy" target="_blank" rel="noopener">GitHub</a></nav>
+  <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+</header>
+<main id="contenu">
+
+<div class="lesson-wrap">
+  <aside class="side" aria-label="Modules">
+    <p class="side-title">Les 10 modules</p>
+    <ol class="side-list"><li data-module="01-methode-securite"><a href="01-methode-securite.html"><span class="side-num">1</span>Méthode de travail et sécurité</a></li><li data-module="02-git-github"><a href="02-git-github.html"><span class="side-num">2</span>Git et GitHub</a></li><li data-module="03-domaines-dns"><a href="03-domaines-dns.html"><span class="side-num">3</span>Domaines et DNS</a></li><li data-module="04-serveur-vps"><a href="04-serveur-vps.html"><span class="side-num">4</span>Ton serveur VPS sur DigitalOcean</a></li><li data-module="05-aapanel"><a href="05-aapanel.html"><span class="side-num">5</span>aaPanel, sites web et HTTPS</a></li><li data-module="06-nodejs"><a href="06-nodejs.html"><span class="side-num">6</span>Node.js, de ton ordinateur au serveur</a></li><li data-module="07-python-automatisation"><a href="07-python-automatisation.html"><span class="side-num">7</span>Python et automatisation</a></li><li data-module="08-ollama-mande-ia"><a href="08-ollama-mande-ia.html"><span class="side-num">8</span>IA locale avec Ollama et Mande-IA v3</a></li><li data-module="09-open-webui"><a href="09-open-webui.html" aria-current="page"><span class="side-num">9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a></li><li data-module="10-projet-final"><a href="10-projet-final.html"><span class="side-num">10</span>Construire et présenter ton projet</a></li></ol>
+  </aside>
+  <article class="lesson" data-module="09-open-webui">
+    <header class="lesson-head">
+      <p class="lesson-meta">Module 9 sur 10, intelligence artificielle, environ 3 heures</p>
+      <h1>Open WebUI, une IA hors ligne pour toute l&#39;équipe</h1>
+      <p class="lesson-goal">Donner à Mande-IA une interface de discussion moderne dans le navigateur, utilisable sans internet par toute une équipe.</p>
+      <details class="toc"><summary>Dans ce module</summary><ol><li><a href="#ce-qu-39-est-open-webui">Ce qu&#39;est Open WebUI</a></li><li><a href="#1-ce-qu-39-il-faut-avant">1. Ce qu&#39;il faut avant</a></li><li><a href="#2-installer-open-webui">2. Installer Open WebUI</a></li><li><a href="#3-lancer-open-webui">3. Lancer Open WebUI</a></li><li><a href="#4-travailler-sans-internet">4. Travailler sans internet</a></li><li><a href="#5-utiliser-tes-documents">5. Utiliser tes documents</a></li><li><a href="#6-toute-l-39-equipe-sur-le-meme-reseau">6. Toute l&#39;équipe sur le même réseau</a></li><li><a href="#7-avec-docker-pour-un-serveur">7. Avec Docker (pour un serveur)</a></li><li><a href="#8-securite">8. Sécurité</a></li><li><a href="#le-pack-mande-ia-pour-les-entreprises">Le pack Mande-IA pour les entreprises</a></li><li><a href="#exercice">Exercice</a></li><li><a href="#verifie-que-tu-sais">Vérifie que tu sais</a></li></ol></details>
+    </header>
+    <div class="prose">
+<h2 id="ce-qu-39-est-open-webui">Ce qu&#39;est Open WebUI</h2>
+<p>Le terminal, c&#39;est pratique pour toi, pas pour une secrétaire ou un directeur. <strong>Open WebUI</strong> est une interface comme ChatGPT, qui tourne sur ta machine et utilise les modèles d&#39;Ollama. Elle gère les comptes, l&#39;historique des discussions et la lecture de documents.</p>
+<p>Avec Ollama, Mande-IA v3 et Open WebUI, une entreprise a son propre assistant IA, <strong>chez elle, sans internet</strong>.</p>
+<h2 id="1-ce-qu-39-il-faut-avant">1. Ce qu&#39;il faut avant</h2>
+<ul>
+<li>Ollama installé et le modèle téléchargé (module 8) :</li>
+</ul>
+<div class="code"><pre><code data-lang="bash">ollama pull professor-minta/mande-ia.v3</code></pre><button class="copy" type="button">Copier</button></div>
+<ul>
+<li><strong>Python 3.11 ou 3.12</strong> (pas 3.13). Sur Windows, installe-le depuis <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org</a> en cochant « Add python.exe to PATH ».</li>
+</ul>
+<h2 id="2-installer-open-webui">2. Installer Open WebUI</h2>
+<p>On crée un environnement dédié (module 7), puis on installe :</p>
+<p>Windows (PowerShell) :</p>
+<div class="code"><pre><code data-lang="powershell">mkdir $HOME\open-webui; cd $HOME\open-webui
+py -3.12 -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install open-webui</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Linux ou macOS :</p>
+<div class="code"><pre><code data-lang="bash">mkdir ~/open-webui &amp;&amp; cd ~/open-webui
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install open-webui</code></pre><button class="copy" type="button">Copier</button></div>
+<p>L&#39;installation télécharge beaucoup de fichiers : fais-la avec une bonne connexion, une seule fois.</p>
+<h2 id="3-lancer-open-webui">3. Lancer Open WebUI</h2>
+<div class="code"><pre><code data-lang="bash">open-webui serve</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Ouvre <strong><a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></strong> dans Chrome.</p>
+<ol>
+<li>Le <strong>premier compte créé devient administrateur</strong>. Il est enregistré sur ta machine, pas sur internet.</li>
+<li>En haut de l&#39;écran, choisis le modèle <strong>professor-minta/mande-ia.v3</strong>.</li>
+<li>Pose ta question : la réponse vient de ton ordinateur.</li>
+</ol>
+<p>Pour les prochaines fois : active l&#39;environnement (<code>.venv\Scripts\Activate.ps1</code> ou <code>source .venv/bin/activate</code>), puis <code>open-webui serve</code>, et ouvre Chrome.</p>
+<h2 id="4-travailler-sans-internet">4. Travailler sans internet</h2>
+<p>Une fois tout installé, Open WebUI fonctionne hors ligne. Pour l&#39;empêcher d&#39;essayer de se connecter (vérification des mises à jour, téléchargements), lance-le en mode hors ligne :</p>
+<p>Windows (PowerShell) :</p>
+<div class="code"><pre><code data-lang="powershell">$env:OFFLINE_MODE = &quot;true&quot;
+open-webui serve</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Linux ou macOS :</p>
+<div class="code"><pre><code data-lang="bash">OFFLINE_MODE=true open-webui serve</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="5-utiliser-tes-documents">5. Utiliser tes documents</h2>
+<p>Dans une discussion, clique sur <strong>+</strong> pour joindre un PDF ou un fichier texte : Mande-IA répond à partir de son contenu. Dans <strong>Workspace → Knowledge</strong>, tu peux créer une base de documents (règlement intérieur, catalogue, procédures) que toute l&#39;équipe interroge.</p>
+<h2 id="6-toute-l-39-equipe-sur-le-meme-reseau">6. Toute l&#39;équipe sur le même réseau</h2>
+<p>Open WebUI écoute aussi le réseau local. Sur le même Wi-Fi ou réseau de bureau, tes collègues ouvrent :</p>
+<div class="code"><pre><code data-lang="text">http://ADRESSE-DU-PC:8080</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Pour connaître l&#39;adresse du PC : <code>ipconfig</code> sur Windows (ligne « Adresse IPv4 »), <code>ip addr</code> sur Linux. Sur Windows, autorise Python dans le pare-feu <strong>pour les réseaux privés uniquement</strong>.</p>
+<p>Côté administrateur, dans <strong>Admin Panel → Users</strong> :</p>
+<ul>
+<li>chaque nouveau compte attend ton <strong>approbation</strong> avant de pouvoir discuter ;</li>
+<li>tu peux désactiver les inscriptions quand toute l&#39;équipe a son compte ;</li>
+<li>tu choisis quels modèles chaque groupe peut utiliser.</li>
+</ul>
+<h2 id="7-avec-docker-pour-un-serveur">7. Avec Docker (pour un serveur)</h2>
+<p>Sur un serveur où Docker est installé, une seule commande suffit :</p>
+<div class="code"><pre><code data-lang="bash">docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data -e WEBUI_SECRET_KEY=une-cle-longue --name open-webui --restart always ghcr.io/open-webui/open-webui:main</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Remplace <code>une-cle-longue</code> par le résultat de <code>openssl rand -hex 32</code>. L&#39;interface est alors sur le port 3000. Ollama doit écouter <code>0.0.0.0</code> pour que le conteneur le trouve.</p>
+<h2 id="8-securite">8. Sécurité</h2>
+<ul>
+<li><strong>Ne mets pas Open WebUI sur internet</strong> sans HTTPS, mots de passe solides et inscriptions fermées.</li>
+<li>Garde-le sur le réseau du bureau : c&#39;est tout l&#39;intérêt d&#39;une IA souveraine.</li>
+<li>Fais une copie du dossier de données d&#39;Open WebUI pour sauvegarder les comptes et les discussions.</li>
+</ul>
+<h2 id="le-pack-mande-ia-pour-les-entreprises">Le pack Mande-IA pour les entreprises</h2>
+<p>Minta Services installe tout cela dans les entreprises, écoles et administrations : Ollama, Mande-IA v3, Open WebUI, les comptes de l&#39;équipe, les documents de la structure et une formation du personnel. Les données ne quittent jamais les locaux. Voir la page <strong>Entreprises</strong> du site de Minta Academy.</p>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Installe Open WebUI et connecte-toi avec ton compte administrateur.</li>
+<li>Discute avec <code>professor-minta/mande-ia.v3</code>, puis coupe internet et recommence.</li>
+<li>Joins un PDF à une discussion et pose des questions sur son contenu.</li>
+<li>Ouvre Open WebUI depuis ton téléphone, sur le même Wi-Fi, et approuve ce nouveau compte.</li>
+<li>Note dans <code>notes/module-09.md</code> les étapes pour installer l&#39;ensemble dans un bureau de 5 personnes.</li>
+</ol>
+<h2 id="verifie-que-tu-sais">Vérifie que tu sais</h2>
+<ul>
+<li>Quel compte devient administrateur ?</li>
+<li>Comment un collègue accède-t-il à Open WebUI depuis son poste ?</li>
+<li>Pourquoi ne pas mettre Open WebUI directement sur internet ?</li>
+</ul>
+
+    </div>
+    <div class="done-box">
+      <button class="btn btn-done" type="button" data-done="09-open-webui" aria-pressed="false">J'ai terminé ce module</button>
+      <p>Fais l'exercice avant de cocher : c'est lui qui t'apprend le plus.</p>
+    </div>
+    <nav class="pager" aria-label="Modules précédent et suivant">
+      <a class="pager-prev" href="08-ollama-mande-ia.html"><span>Module 8</span>IA locale avec Ollama et Mande-IA v3</a>
+      <a class="pager-next" href="10-projet-final.html"><span>Module 10</span>Construire et présenter ton projet</a>
+    </nav>
+  </article>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
+    <p><a href="https://wa.me/22377295259?text=Bonjour%2C%20j%E2%80%99ai%20une%20question%20sur%20Minta%20Academy." target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:academy@mintaservices.com">academy@mintaservices.com</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
+  </div>
+</footer>
+<script src="assets/app.js?v=1" defer></script>
+</body>
+</html>

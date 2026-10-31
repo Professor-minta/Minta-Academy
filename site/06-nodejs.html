@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 6 : Node.js, de ton ordinateur au serveur, Minta Academy</title>
+<meta name="description" content="Construire une petite application Node.js propre, la mettre sur GitHub puis la faire tourner sur ton serveur avec aaPanel.">
+<meta name="theme-color" content="#14213d">
+<meta property="og:title" content="Module 6 : Node.js, de ton ordinateur au serveur, Minta Academy">
+<meta property="og:description" content="Construire une petite application Node.js propre, la mettre sur GitHub puis la faire tourner sur ton serveur avec aaPanel.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ma-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Cours</a><a href="entreprises.html">Entreprises</a><a href="https://github.com/Professor-minta/Minta-Academy" target="_blank" rel="noopener">GitHub</a></nav>
+  <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+</header>
+<main id="contenu">
+
+<div class="lesson-wrap">
+  <aside class="side" aria-label="Modules">
+    <p class="side-title">Les 10 modules</p>
+    <ol class="side-list"><li data-module="01-methode-securite"><a href="01-methode-securite.html"><span class="side-num">1</span>Méthode de travail et sécurité</a></li><li data-module="02-git-github"><a href="02-git-github.html"><span class="side-num">2</span>Git et GitHub</a></li><li data-module="03-domaines-dns"><a href="03-domaines-dns.html"><span class="side-num">3</span>Domaines et DNS</a></li><li data-module="04-serveur-vps"><a href="04-serveur-vps.html"><span class="side-num">4</span>Ton serveur VPS sur DigitalOcean</a></li><li data-module="05-aapanel"><a href="05-aapanel.html"><span class="side-num">5</span>aaPanel, sites web et HTTPS</a></li><li data-module="06-nodejs"><a href="06-nodejs.html" aria-current="page"><span class="side-num">6</span>Node.js, de ton ordinateur au serveur</a></li><li data-module="07-python-automatisation"><a href="07-python-automatisation.html"><span class="side-num">7</span>Python et automatisation</a></li><li data-module="08-ollama-mande-ia"><a href="08-ollama-mande-ia.html"><span class="side-num">8</span>IA locale avec Ollama et Mande-IA v3</a></li><li data-module="09-open-webui"><a href="09-open-webui.html"><span class="side-num">9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a></li><li data-module="10-projet-final"><a href="10-projet-final.html"><span class="side-num">10</span>Construire et présenter ton projet</a></li></ol>
+  </aside>
+  <article class="lesson" data-module="06-nodejs">
+    <header class="lesson-head">
+      <p class="lesson-meta">Module 6 sur 10, développement, environ 4 heures</p>
+      <h1>Node.js, de ton ordinateur au serveur</h1>
+      <p class="lesson-goal">Construire une petite application Node.js propre, la mettre sur GitHub puis la faire tourner sur ton serveur avec aaPanel.</p>
+      <details class="toc"><summary>Dans ce module</summary><ol><li><a href="#pourquoi-node-js">Pourquoi Node.js</a></li><li><a href="#1-installer-node-js">1. Installer Node.js</a></li><li><a href="#2-la-structure-d-39-un-projet-propre">2. La structure d&#39;un projet propre</a></li><li><a href="#3-creer-le-projet">3. Créer le projet</a></li><li><a href="#4-le-serveur">4. Le serveur</a></li><li><a href="#5-envoyer-le-projet-sur-github">5. Envoyer le projet sur GitHub</a></li><li><a href="#6-deployer-sur-le-serveur-avec-aapanel">6. Déployer sur le serveur avec aaPanel</a></li><li><a href="#7-mettre-a-jour-l-39-application">7. Mettre à jour l&#39;application</a></li><li><a href="#erreurs-frequentes">Erreurs fréquentes</a></li><li><a href="#exercice">Exercice</a></li><li><a href="#verifie-que-tu-sais">Vérifie que tu sais</a></li></ol></details>
+    </header>
+    <div class="prose">
+<h2 id="pourquoi-node-js">Pourquoi Node.js</h2>
+<p>Node.js fait tourner du JavaScript côté serveur. Avec un seul langage, tu écris la page web et le serveur qui répond. C&#39;est la technologie de Mande-IA : discussion, WhatsApp, paiement, tout passe par un fichier <code>server.js</code>.</p>
+<h2 id="1-installer-node-js">1. Installer Node.js</h2>
+<p>Télécharge la version <strong>LTS</strong> sur <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> et installe-la. Vérifie :</p>
+<div class="code"><pre><code data-lang="bash">node --version
+npm --version</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="2-la-structure-d-39-un-projet-propre">2. La structure d&#39;un projet propre</h2>
+<div class="code"><pre><code data-lang="text">mon-app/
+├── server.js        le serveur
+├── package.json     nom du projet, dépendances, commande de démarrage
+├── public/          les fichiers envoyés au navigateur
+│   └── index.html
+├── .env             les secrets (jamais sur GitHub)
+├── .env.example     la liste des variables, sans les valeurs
+└── .gitignore</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="3-creer-le-projet">3. Créer le projet</h2>
+<div class="code"><pre><code data-lang="bash">mkdir mon-app &amp;&amp; cd mon-app
+npm init -y
+npm install express dotenv
+mkdir public</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Dans <code>package.json</code>, ajoute la commande de démarrage :</p>
+<div class="code"><pre><code data-lang="json">&quot;scripts&quot;: {
+  &quot;start&quot;: &quot;node server.js&quot;
+}</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="4-le-serveur">4. Le serveur</h2>
+<p><code>server.js</code> :</p>
+<div class="code"><pre><code data-lang="javascript">require(&#39;dotenv&#39;).config();
+const express = require(&#39;express&#39;);
+const path = require(&#39;path&#39;);
+
+const app = express();
+const PORT = Number(process.env.PORT || 3000);
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, &#39;public&#39;)));
+
+app.get(&#39;/api/sante&#39;, (req, res) =&gt; {
+  res.json({ ok: true, heure: new Date().toISOString() });
+});
+
+app.post(&#39;/api/bonjour&#39;, (req, res) =&gt; {
+  const nom = String(req.body?.nom || &#39;&#39;).trim().slice(0, 40);
+  if (!nom) return res.status(400).json({ erreur: &#39;Donne ton nom.&#39; });
+  res.json({ message: `I ni ce, ${nom} !` });
+});
+
+app.listen(PORT, () =&gt; console.log(`Mon app écoute sur le port ${PORT}`));</code></pre><button class="copy" type="button">Copier</button></div>
+<p><code>public/index.html</code> :</p>
+<div class="code"><pre><code data-lang="html">&lt;!doctype html&gt;
+&lt;html lang=&quot;fr&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Mon app&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Mon app Node.js&lt;/h1&gt;
+  &lt;form id=&quot;f&quot;&gt;&lt;input id=&quot;nom&quot; placeholder=&quot;Ton nom&quot;&gt; &lt;button&gt;Dire bonjour&lt;/button&gt;&lt;/form&gt;
+  &lt;p id=&quot;r&quot;&gt;&lt;/p&gt;
+  &lt;script&gt;
+    document.getElementById(&#39;f&#39;).onsubmit = async (e) =&gt; {
+      e.preventDefault();
+      const res = await fetch(&#39;/api/bonjour&#39;, {
+        method: &#39;POST&#39;,
+        headers: { &#39;content-type&#39;: &#39;application/json&#39; },
+        body: JSON.stringify({ nom: document.getElementById(&#39;nom&#39;).value })
+      });
+      const data = await res.json();
+      document.getElementById(&#39;r&#39;).textContent = data.message || data.erreur;
+    };
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><button class="copy" type="button">Copier</button></div>
+<p><code>.env</code> (sur ton ordinateur seulement) et <code>.env.example</code> (sur GitHub) :</p>
+<div class="code"><pre><code data-lang="text">PORT=3000</code></pre><button class="copy" type="button">Copier</button></div>
+<p><code>.gitignore</code> :</p>
+<div class="code"><pre><code data-lang="text">.env
+node_modules/
+*.log</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Lance l&#39;application :</p>
+<div class="code"><pre><code data-lang="bash">npm start</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Ouvre <a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a> et teste le formulaire.</p>
+<h2 id="5-envoyer-le-projet-sur-github">5. Envoyer le projet sur GitHub</h2>
+<div class="code"><pre><code data-lang="bash">git init
+git add server.js package.json package-lock.json public .env.example .gitignore
+git commit -m &quot;Première version de mon app&quot;
+git remote add origin git@github.com:TonNom/mon-app.git
+git push -u origin main</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Vérifie sur GitHub que <code>.env</code> et <code>node_modules</code> <strong>n&#39;y sont pas</strong>.</p>
+<h2 id="6-deployer-sur-le-serveur-avec-aapanel">6. Déployer sur le serveur avec aaPanel</h2>
+<p><strong>a. Récupérer le code.</strong> Dans le terminal d&#39;aaPanel :</p>
+<div class="code"><pre><code data-lang="bash">cd /www/wwwroot
+git clone https://github.com/TonNom/mon-app.git
+cd mon-app
+npm install --omit=dev</code></pre><button class="copy" type="button">Copier</button></div>
+<p><strong>b. Créer le fichier <code>.env</code> sur le serveur</strong> avec <strong>Files</strong>, puis protège-le :</p>
+<div class="code"><pre><code data-lang="bash">chown www:www .env &amp;&amp; chmod 600 .env</code></pre><button class="copy" type="button">Copier</button></div>
+<p><strong>c. Créer le projet Node.js.</strong> Dans aaPanel : <strong>Website → Node project → Add Node project</strong></p>
+<div class="table"><table><thead><tr><th>Réglage</th><th>Valeur</th></tr></thead><tbody><tr><td>Path</td><td><code>/www/wwwroot/mon-app</code></td></tr>
+<tr><td>Run opt</td><td><code>start</code></td></tr>
+<tr><td>Port</td><td><code>3000</code> (le même que dans <code>.env</code>)</td></tr>
+<tr><td>User</td><td><code>www</code></td></tr>
+<tr><td>Node</td><td>la version LTS installée</td></tr></tbody></table></div>
+<p><strong>d. Le domaine et le HTTPS.</strong> Dans les réglages du projet, ajoute ton domaine (par exemple <code>app.mondomaine.com</code>, avec son enregistrement A du module 3), puis active <strong>SSL → Let&#39;s Encrypt</strong>. aaPanel crée lui-même le reverse proxy Nginx vers le port 3000.</p>
+<p><strong>e. Les erreurs.</strong> L&#39;onglet <strong>Project log</strong> montre ce que ton application écrit avec <code>console.log</code> et les erreurs.</p>
+<h2 id="7-mettre-a-jour-l-39-application">7. Mettre à jour l&#39;application</h2>
+<div class="code"><pre><code data-lang="bash">cd /www/wwwroot/mon-app &amp;&amp; git pull &amp;&amp; npm install --omit=dev</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Puis <strong>Restart</strong> dans aaPanel. C&#39;est la routine utilisée pour Mande-IA.</p>
+<h2 id="erreurs-frequentes">Erreurs fréquentes</h2>
+<ul>
+<li><strong><code>Cannot find module</code></strong> : tu n&#39;es pas dans le bon dossier, ou tu as oublié <code>npm install</code>.</li>
+<li><strong><code>EADDRINUSE</code></strong> : le port est déjà pris par une autre application. Change de port.</li>
+<li><strong>502 Bad Gateway</strong> : l&#39;application est arrêtée ou plantée. Regarde le Project log.</li>
+</ul>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Crée l&#39;application ci-dessus et teste-la sur ton ordinateur.</li>
+<li>Ajoute une route <code>GET /api/proverbe</code> qui renvoie un proverbe malien au hasard parmi cinq.</li>
+<li>Envoie le projet sur GitHub, sans <code>.env</code>.</li>
+<li>Déploie-le sur ton serveur avec un sous-domaine en HTTPS.</li>
+</ol>
+<h2 id="verifie-que-tu-sais">Vérifie que tu sais</h2>
+<ul>
+<li>À quoi sert <code>.env.example</code> ?</li>
+<li>Quelle commande installe les dépendances sur le serveur ?</li>
+<li>Que vérifies-tu en premier quand le site affiche « 502 Bad Gateway » ?</li>
+</ul>
+
+    </div>
+    <div class="done-box">
+      <button class="btn btn-done" type="button" data-done="06-nodejs" aria-pressed="false">J'ai terminé ce module</button>
+      <p>Fais l'exercice avant de cocher : c'est lui qui t'apprend le plus.</p>
+    </div>
+    <nav class="pager" aria-label="Modules précédent et suivant">
+      <a class="pager-prev" href="05-aapanel.html"><span>Module 5</span>aaPanel, sites web et HTTPS</a>
+      <a class="pager-next" href="07-python-automatisation.html"><span>Module 7</span>Python et automatisation</a>
+    </nav>
+  </article>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
+    <p><a href="https://wa.me/22377295259?text=Bonjour%2C%20j%E2%80%99ai%20une%20question%20sur%20Minta%20Academy." target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:academy@mintaservices.com">academy@mintaservices.com</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
+  </div>
+</footer>
+<script src="assets/app.js?v=1" defer></script>
+</body>
+</html>

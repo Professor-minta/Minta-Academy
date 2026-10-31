@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 8 : IA locale avec Ollama et Mande-IA v3, Minta Academy</title>
+<meta name="description" content="Faire tourner une intelligence artificielle sur ta propre machine, sans internet, avec le modèle Mande-IA v3.">
+<meta name="theme-color" content="#14213d">
+<meta property="og:title" content="Module 8 : IA locale avec Ollama et Mande-IA v3, Minta Academy">
+<meta property="og:description" content="Faire tourner une intelligence artificielle sur ta propre machine, sans internet, avec le modèle Mande-IA v3.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ma-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Cours</a><a href="entreprises.html">Entreprises</a><a href="https://github.com/Professor-minta/Minta-Academy" target="_blank" rel="noopener">GitHub</a></nav>
+  <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+</header>
+<main id="contenu">
+
+<div class="lesson-wrap">
+  <aside class="side" aria-label="Modules">
+    <p class="side-title">Les 10 modules</p>
+    <ol class="side-list"><li data-module="01-methode-securite"><a href="01-methode-securite.html"><span class="side-num">1</span>Méthode de travail et sécurité</a></li><li data-module="02-git-github"><a href="02-git-github.html"><span class="side-num">2</span>Git et GitHub</a></li><li data-module="03-domaines-dns"><a href="03-domaines-dns.html"><span class="side-num">3</span>Domaines et DNS</a></li><li data-module="04-serveur-vps"><a href="04-serveur-vps.html"><span class="side-num">4</span>Ton serveur VPS sur DigitalOcean</a></li><li data-module="05-aapanel"><a href="05-aapanel.html"><span class="side-num">5</span>aaPanel, sites web et HTTPS</a></li><li data-module="06-nodejs"><a href="06-nodejs.html"><span class="side-num">6</span>Node.js, de ton ordinateur au serveur</a></li><li data-module="07-python-automatisation"><a href="07-python-automatisation.html"><span class="side-num">7</span>Python et automatisation</a></li><li data-module="08-ollama-mande-ia"><a href="08-ollama-mande-ia.html" aria-current="page"><span class="side-num">8</span>IA locale avec Ollama et Mande-IA v3</a></li><li data-module="09-open-webui"><a href="09-open-webui.html"><span class="side-num">9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a></li><li data-module="10-projet-final"><a href="10-projet-final.html"><span class="side-num">10</span>Construire et présenter ton projet</a></li></ol>
+  </aside>
+  <article class="lesson" data-module="08-ollama-mande-ia">
+    <header class="lesson-head">
+      <p class="lesson-meta">Module 8 sur 10, intelligence artificielle, environ 3 heures</p>
+      <h1>IA locale avec Ollama et Mande-IA v3</h1>
+      <p class="lesson-goal">Faire tourner une intelligence artificielle sur ta propre machine, sans internet, avec le modèle Mande-IA v3.</p>
+      <details class="toc"><summary>Dans ce module</summary><ol><li><a href="#pourquoi-une-ia-locale">Pourquoi une IA locale</a></li><li><a href="#1-le-materiel-necessaire">1. Le matériel nécessaire</a></li><li><a href="#2-installer-ollama">2. Installer Ollama</a></li><li><a href="#3-lancer-mande-ia-v3">3. Lancer Mande-IA v3</a></li><li><a href="#4-les-commandes-ollama-a-connaitre">4. Les commandes Ollama à connaître</a></li><li><a href="#5-parler-au-modele-depuis-un-programme">5. Parler au modèle depuis un programme</a></li><li><a href="#6-creer-ton-propre-assistant">6. Créer ton propre assistant</a></li><li><a href="#7-securite">7. Sécurité</a></li><li><a href="#exercice">Exercice</a></li><li><a href="#verifie-que-tu-sais">Vérifie que tu sais</a></li></ol></details>
+    </header>
+    <div class="prose">
+<h2 id="pourquoi-une-ia-locale">Pourquoi une IA locale</h2>
+<p>Les IA en ligne demandent une connexion, coûtent cher en données et envoient tes textes à l&#39;étranger. Une <strong>IA locale</strong> tourne sur ton ordinateur :</p>
+<ul>
+<li>elle marche <strong>sans internet</strong>, même pendant une coupure de la fibre ;</li>
+<li>tes données <strong>restent chez toi</strong> : idéal pour une école, un cabinet ou une entreprise ;</li>
+<li>elle ne coûte <strong>rien à l&#39;usage</strong>, une fois installée.</li>
+</ul>
+<p><strong>Ollama</strong> est le logiciel qui télécharge et fait tourner ces modèles. <strong>Mande-IA v3</strong> est le modèle préparé par Minta Services pour le Mali.</p>
+<h2 id="1-le-materiel-necessaire">1. Le matériel nécessaire</h2>
+<div class="table"><table><thead><tr><th></th><th>Minimum</th><th>Conseillé</th></tr></thead><tbody><tr><td>Mémoire (RAM)</td><td>8 Go</td><td>16 Go</td></tr>
+<tr><td>Espace disque libre</td><td>5 Go</td><td>20 Go</td></tr>
+<tr><td>Système</td><td>Windows 10/11, macOS, Linux</td><td></td></tr>
+<tr><td>Carte graphique</td><td>pas obligatoire</td><td>une carte NVIDIA accélère beaucoup</td></tr></tbody></table></div>
+<p>Le modèle Mande-IA v3 pèse environ <strong>2 Go</strong>. Sans carte graphique il fonctionne, simplement plus lentement.</p>
+<h2 id="2-installer-ollama">2. Installer Ollama</h2>
+<ul>
+<li><strong>Windows et macOS</strong> : télécharge l&#39;installateur sur <a href="https://ollama.com/download" target="_blank" rel="noopener">ollama.com/download</a> et lance-le.</li>
+<li><strong>Linux</strong> :</li>
+</ul>
+<div class="code"><pre><code data-lang="bash">curl -fsSL https://ollama.com/install.sh | sh</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Vérifie dans PowerShell ou le terminal :</p>
+<div class="code"><pre><code data-lang="bash">ollama --version</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="3-lancer-mande-ia-v3">3. Lancer Mande-IA v3</h2>
+<div class="code"><pre><code data-lang="bash">ollama run professor-minta/mande-ia.v3</code></pre><button class="copy" type="button">Copier</button></div>
+<p>La première fois, Ollama télécharge le modèle (environ 2 Go, à faire avec une bonne connexion). Ensuite, il démarre en quelques secondes, <strong>même sans internet</strong>.</p>
+<p>Écris ta question et appuie sur Entrée :</p>
+<div class="code"><pre><code data-lang="text">&gt;&gt;&gt; I ni ce ! Explique-moi en trois phrases ce qu&#39;est un serveur VPS.</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Pour quitter : <code>/bye</code>.</p>
+<p>Comme toute IA, Mande-IA peut se tromper, surtout en bambara où il apprend encore. Vérifie les informations importantes.</p>
+<h2 id="4-les-commandes-ollama-a-connaitre">4. Les commandes Ollama à connaître</h2>
+<div class="code"><pre><code data-lang="bash">ollama list                          # modèles installés et leur taille
+ollama ps                            # modèles en cours d&#39;utilisation
+ollama pull professor-minta/mande-ia.v3   # télécharger ou mettre à jour
+ollama show professor-minta/mande-ia.v3   # informations sur le modèle
+ollama rm nom-du-modele              # supprimer un modèle pour libérer de la place</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="5-parler-au-modele-depuis-un-programme">5. Parler au modèle depuis un programme</h2>
+<p>Ollama ouvre une <strong>API</strong> sur ta machine, à l&#39;adresse <code>http://localhost:11434</code>. Tes applications du module 6 peuvent donc utiliser l&#39;IA.</p>
+<p>Linux ou macOS :</p>
+<div class="code"><pre><code data-lang="bash">curl http://localhost:11434/api/generate -d &#39;{&quot;model&quot;: &quot;professor-minta/mande-ia.v3&quot;, &quot;prompt&quot;: &quot;Donne un proverbe bambara et sa traduction.&quot;, &quot;stream&quot;: false}&#39;</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Windows (PowerShell) :</p>
+<div class="code"><pre><code data-lang="powershell">Invoke-RestMethod -Uri http://localhost:11434/api/generate -Method Post -ContentType &#39;application/json&#39; -Body &#39;{&quot;model&quot;: &quot;professor-minta/mande-ia.v3&quot;, &quot;prompt&quot;: &quot;Donne un proverbe bambara et sa traduction.&quot;, &quot;stream&quot;: false}&#39;</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Depuis Node.js (module 6) :</p>
+<div class="code"><pre><code data-lang="javascript">const reponse = await fetch(&#39;http://localhost:11434/api/generate&#39;, {
+  method: &#39;POST&#39;,
+  headers: { &#39;content-type&#39;: &#39;application/json&#39; },
+  body: JSON.stringify({ model: &#39;professor-minta/mande-ia.v3&#39;, prompt: &#39;I ni ce !&#39;, stream: false })
+});
+const data = await reponse.json();
+console.log(data.response);</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="6-creer-ton-propre-assistant">6. Créer ton propre assistant</h2>
+<p>Un <strong>Modelfile</strong> part de Mande-IA v3 et lui donne une mission précise. Crée un fichier nommé <code>Modelfile</code> :</p>
+<div class="code"><pre><code data-lang="text">FROM professor-minta/mande-ia.v3
+PARAMETER temperature 0.6
+SYSTEM &quot;&quot;&quot;
+Tu es l&#39;assistant du lycée de Missira, à Ségou.
+Tu réponds aux élèves et aux parents en français simple ou en bambara.
+Si tu ne connais pas une information sur le lycée, dis-le et propose d&#39;appeler le secrétariat.
+&quot;&quot;&quot;</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Crée et lance ton modèle :</p>
+<div class="code"><pre><code data-lang="bash">ollama create assistant-lycee -f Modelfile
+ollama run assistant-lycee</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Pour le partager, crée un compte sur <a href="https://ollama.com" target="_blank" rel="noopener">ollama.com</a>, ajoute la clé de ta machine dans ton profil, puis :</p>
+<div class="code"><pre><code data-lang="bash">ollama cp assistant-lycee tonnom/assistant-lycee
+ollama push tonnom/assistant-lycee</code></pre><button class="copy" type="button">Copier</button></div>
+<p>C&#39;est ainsi que <code>professor-minta/mande-ia.v3</code> a été publié.</p>
+<h2 id="7-securite">7. Sécurité</h2>
+<ul>
+<li>Par défaut, Ollama n&#39;écoute que <strong>ta propre machine</strong> (<code>127.0.0.1</code>). Ne l&#39;ouvre pas sur internet : n&#39;importe qui pourrait utiliser ta machine.</li>
+<li>Pour le réseau d&#39;un bureau, on passe par Open WebUI (module 9), qui gère des comptes et des mots de passe.</li>
+<li>Ne mets pas d&#39;informations confidentielles dans le <code>SYSTEM</code> d&#39;un modèle que tu publies.</li>
+</ul>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Installe Ollama et lance <code>professor-minta/mande-ia.v3</code>.</li>
+<li>Coupe internet et vérifie que le modèle répond toujours.</li>
+<li>Appelle l&#39;API avec curl ou PowerShell.</li>
+<li>Crée un assistant avec un Modelfile pour une structure que tu connais (école, boutique, association).</li>
+<li>Note dans <code>notes/module-08.md</code> la vitesse de réponse sur ta machine et la RAM utilisée (Gestionnaire des tâches ou <code>htop</code>).</li>
+</ol>
+<h2 id="verifie-que-tu-sais">Vérifie que tu sais</h2>
+<ul>
+<li>Pourquoi une IA locale protège mieux les données d&#39;une entreprise ?</li>
+<li>À quelle adresse se trouve l&#39;API d&#39;Ollama ?</li>
+<li>Que contient un Modelfile ?</li>
+</ul>
+
+    </div>
+    <div class="done-box">
+      <button class="btn btn-done" type="button" data-done="08-ollama-mande-ia" aria-pressed="false">J'ai terminé ce module</button>
+      <p>Fais l'exercice avant de cocher : c'est lui qui t'apprend le plus.</p>
+    </div>
+    <nav class="pager" aria-label="Modules précédent et suivant">
+      <a class="pager-prev" href="07-python-automatisation.html"><span>Module 7</span>Python et automatisation</a>
+      <a class="pager-next" href="09-open-webui.html"><span>Module 9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a>
+    </nav>
+  </article>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
+    <p><a href="https://wa.me/22377295259?text=Bonjour%2C%20j%E2%80%99ai%20une%20question%20sur%20Minta%20Academy." target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:academy@mintaservices.com">academy@mintaservices.com</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
+  </div>
+</footer>
+<script src="assets/app.js?v=1" defer></script>
+</body>
+</html>

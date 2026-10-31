@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon app</title>
+</head>
+<body>
+  <h1>Mon app Node.js</h1>
+  <form id="f"><input id="nom" placeholder="Ton nom"> <button>Dire bonjour</button></form>
+  <p id="r"></p>
+  <script>
+    document.getElementById('f').onsubmit = async (e) => {
+      e.preventDefault();
+      const res = await fetch('/api/bonjour', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ nom: document.getElementById('nom').value })
+      });
+      const data = await res.json();
+      document.getElementById('r').textContent = data.message || data.erreur;
+    };
+  </script>
+</body>
+</html>

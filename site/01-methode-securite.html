@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 1 : Méthode de travail et sécurité, Minta Academy</title>
+<meta name="description" content="Organiser ton ordinateur comme un professionnel et protéger tes comptes avant de toucher à un serveur.">
+<meta name="theme-color" content="#14213d">
+<meta property="og:title" content="Module 1 : Méthode de travail et sécurité, Minta Academy">
+<meta property="og:description" content="Organiser ton ordinateur comme un professionnel et protéger tes comptes avant de toucher à un serveur.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ma-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Cours</a><a href="entreprises.html">Entreprises</a><a href="https://github.com/Professor-minta/Minta-Academy" target="_blank" rel="noopener">GitHub</a></nav>
+  <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+</header>
+<main id="contenu">
+
+<div class="lesson-wrap">
+  <aside class="side" aria-label="Modules">
+    <p class="side-title">Les 10 modules</p>
+    <ol class="side-list"><li data-module="01-methode-securite"><a href="01-methode-securite.html" aria-current="page"><span class="side-num">1</span>Méthode de travail et sécurité</a></li><li data-module="02-git-github"><a href="02-git-github.html"><span class="side-num">2</span>Git et GitHub</a></li><li data-module="03-domaines-dns"><a href="03-domaines-dns.html"><span class="side-num">3</span>Domaines et DNS</a></li><li data-module="04-serveur-vps"><a href="04-serveur-vps.html"><span class="side-num">4</span>Ton serveur VPS sur DigitalOcean</a></li><li data-module="05-aapanel"><a href="05-aapanel.html"><span class="side-num">5</span>aaPanel, sites web et HTTPS</a></li><li data-module="06-nodejs"><a href="06-nodejs.html"><span class="side-num">6</span>Node.js, de ton ordinateur au serveur</a></li><li data-module="07-python-automatisation"><a href="07-python-automatisation.html"><span class="side-num">7</span>Python et automatisation</a></li><li data-module="08-ollama-mande-ia"><a href="08-ollama-mande-ia.html"><span class="side-num">8</span>IA locale avec Ollama et Mande-IA v3</a></li><li data-module="09-open-webui"><a href="09-open-webui.html"><span class="side-num">9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a></li><li data-module="10-projet-final"><a href="10-projet-final.html"><span class="side-num">10</span>Construire et présenter ton projet</a></li></ol>
+  </aside>
+  <article class="lesson" data-module="01-methode-securite">
+    <header class="lesson-head">
+      <p class="lesson-meta">Module 1 sur 10, fondations, environ 2 heures</p>
+      <h1>Méthode de travail et sécurité</h1>
+      <p class="lesson-goal">Organiser ton ordinateur comme un professionnel et protéger tes comptes avant de toucher à un serveur.</p>
+      <details class="toc"><summary>Dans ce module</summary><ol><li><a href="#pourquoi-commencer-par-la-methode">Pourquoi commencer par la méthode</a></li><li><a href="#1-organiser-ton-dossier-de-travail">1. Organiser ton dossier de travail</a></li><li><a href="#2-les-mots-de-passe">2. Les mots de passe</a></li><li><a href="#3-la-double-authentification-2fa">3. La double authentification (2FA)</a></li><li><a href="#4-les-cles-ssh">4. Les clés SSH</a></li><li><a href="#5-les-5-regles-absolues">5. Les 5 règles absolues</a></li><li><a href="#6-reconnaitre-une-arnaque">6. Reconnaître une arnaque</a></li><li><a href="#exercice">Exercice</a></li><li><a href="#verifie-que-tu-sais">Vérifie que tu sais</a></li></ol></details>
+    </header>
+    <div class="prose">
+<h2 id="pourquoi-commencer-par-la-methode">Pourquoi commencer par la méthode</h2>
+<p>Un serveur mal protégé peut être piraté en quelques heures. Un mot de passe envoyé sur WhatsApp, une clé collée dans un dépôt public ou une capture d&#39;écran qui montre l&#39;adresse de ton panneau d&#39;administration suffisent. Avant d&#39;apprendre la technique, on prend donc de bonnes habitudes. Elles te protégeront pendant toute ta carrière.</p>
+<h2 id="1-organiser-ton-dossier-de-travail">1. Organiser ton dossier de travail</h2>
+<p>Crée un seul dossier pour tous tes projets, toujours au même endroit.</p>
+<div class="code"><pre><code data-lang="text">minta-academy/
+├── notes/          tes notes de cours, un fichier par module
+├── projets/        le code de tes projets
+├── serveurs/       infos de connexion (sans aucun mot de passe)
+└── captures/       captures d&#39;écran, recadrées avant de les partager</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Sur Windows, ouvre <strong>PowerShell</strong> et tape :</p>
+<div class="code"><pre><code data-lang="powershell">mkdir $HOME\minta-academy\notes, $HOME\minta-academy\projets, $HOME\minta-academy\serveurs, $HOME\minta-academy\captures</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Sur Linux ou macOS :</p>
+<div class="code"><pre><code data-lang="bash">mkdir -p ~/minta-academy/{notes,projets,serveurs,captures}</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="2-les-mots-de-passe">2. Les mots de passe</h2>
+<ul>
+<li><strong>Un mot de passe différent pour chaque compte.</strong> Si un site est piraté, les autres restent protégés.</li>
+<li><strong>Long plutôt que compliqué</strong> : une phrase de 4 ou 5 mots, par exemple <code>mangue-pirogue-Segou-fleuve-2026</code>, est plus solide et plus facile à retenir que <code>P@ss1</code>.</li>
+<li><strong>Un gestionnaire de mots de passe</strong> retient tout à ta place. Bitwarden est gratuit et fonctionne sur téléphone et ordinateur.</li>
+</ul>
+<h2 id="3-la-double-authentification-2fa">3. La double authentification (2FA)</h2>
+<p>Avec la 2FA, un pirate qui vole ton mot de passe ne peut toujours pas entrer : il lui manque le code à 6 chiffres de ton téléphone.</p>
+<ol>
+<li>Installe <strong>Google Authenticator</strong>, <strong>Microsoft Authenticator</strong> ou <strong>Aegis</strong> (Android) sur ton téléphone.</li>
+<li>Active la 2FA partout où c&#39;est possible : e-mail, GitHub, DigitalOcean, registraire de domaine, aaPanel.</li>
+<li>Garde les <strong>codes de secours</strong> sur papier, dans un endroit sûr. Sans eux, si tu perds ton téléphone, tu perds tes comptes.</li>
+</ol>
+<h2 id="4-les-cles-ssh">4. Les clés SSH</h2>
+<p>Une clé SSH remplace le mot de passe pour te connecter à un serveur ou à GitHub. Elle est en deux parties :</p>
+<ul>
+<li>la <strong>clé privée</strong> reste sur ton ordinateur et ne se partage <strong>jamais</strong> ;</li>
+<li>la <strong>clé publique</strong> (le fichier qui finit par <code>.pub</code>) se donne sans risque.</li>
+</ul>
+<p>Crée ta clé (Windows 10 et 11, Linux et macOS ont déjà la commande) :</p>
+<div class="code"><pre><code data-lang="bash">ssh-keygen -t ed25519 -C &quot;ton-email@exemple.com&quot;</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Appuie sur Entrée pour l&#39;emplacement proposé, puis choisis une phrase de passe. Affiche ensuite ta clé publique :</p>
+<div class="code"><pre><code data-lang="bash">cat ~/.ssh/id_ed25519.pub</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Sur Windows, la clé est dans <code>C:\Users\TonNom\.ssh\</code>.</p>
+<h2 id="5-les-5-regles-absolues">5. Les 5 règles absolues</h2>
+<ol>
+<li><strong>Les clés et mots de passe ne vont jamais dans un message</strong>, ni WhatsApp, ni e-mail, ni chat avec une IA.</li>
+<li><strong>Les fichiers <code>.env</code> ne vont jamais sur GitHub.</strong> On les ajoute au fichier <code>.gitignore</code> (module 2).</li>
+<li><strong>On recadre les captures d&#39;écran</strong> avant de les partager : pas d&#39;adresse IP, pas de port de panneau, pas de lien de session, pas de clé.</li>
+<li><strong>Une clé exposée est une clé perdue.</strong> Si elle a été montrée, on la remplace tout de suite, même si « personne ne l&#39;a vue ».</li>
+<li><strong>On sauvegarde avant de modifier.</strong> Un instantané (snapshot) du serveur ou une copie du fichier avant chaque changement important.</li>
+</ol>
+<h2 id="6-reconnaitre-une-arnaque">6. Reconnaître une arnaque</h2>
+<ul>
+<li>Un message urgent qui demande un code reçu par SMS : c&#39;est <strong>toujours</strong> une arnaque.</li>
+<li>Un lien qui ressemble à un vrai site (<code>githuub.com</code>, <code>digita1ocean.com</code>) : regarde l&#39;adresse lettre par lettre.</li>
+<li>Un « support technique » qui te contacte en premier : les vrais services ne demandent jamais ton mot de passe.</li>
+</ul>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Crée ton dossier <code>minta-academy</code> avec ses 4 sous-dossiers.</li>
+<li>Installe un gestionnaire de mots de passe et une application 2FA.</li>
+<li>Active la 2FA sur ton adresse e-mail principale.</li>
+<li>Crée ta clé SSH et affiche ta clé publique.</li>
+<li>Dans <code>notes/module-01.md</code>, écris les 5 règles absolues avec tes propres mots.</li>
+</ol>
+<h2 id="verifie-que-tu-sais">Vérifie que tu sais</h2>
+<ul>
+<li>Quelle partie de ta clé SSH peux-tu donner, et laquelle jamais ?</li>
+<li>Que fais-tu si tu as collé une clé d&#39;API dans un groupe WhatsApp par erreur ?</li>
+<li>Pourquoi garder les codes de secours de la 2FA sur papier ?</li>
+</ul>
+
+    </div>
+    <div class="done-box">
+      <button class="btn btn-done" type="button" data-done="01-methode-securite" aria-pressed="false">J'ai terminé ce module</button>
+      <p>Fais l'exercice avant de cocher : c'est lui qui t'apprend le plus.</p>
+    </div>
+    <nav class="pager" aria-label="Modules précédent et suivant">
+      <span></span>
+      <a class="pager-next" href="02-git-github.html"><span>Module 2</span>Git et GitHub</a>
+    </nav>
+  </article>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
+    <p><a href="https://wa.me/22377295259?text=Bonjour%2C%20j%E2%80%99ai%20une%20question%20sur%20Minta%20Academy." target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:academy@mintaservices.com">academy@mintaservices.com</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
+  </div>
+</footer>
+<script src="assets/app.js?v=1" defer></script>
+</body>
+</html>
