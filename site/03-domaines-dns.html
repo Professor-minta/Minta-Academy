@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 3 : Domaines et DNS, Minta Academy</title>
+<meta name="description" content="Choisir un nom de domaine, l&#39;acheter en sécurité et le relier à ton serveur.">
+<meta name="theme-color" content="#14213d">
+<meta property="og:title" content="Module 3 : Domaines et DNS, Minta Academy">
+<meta property="og:description" content="Choisir un nom de domaine, l&#39;acheter en sécurité et le relier à ton serveur.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ma-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Cours</a><a href="entreprises.html">Entreprises</a><a href="https://github.com/Professor-minta/Minta-Academy" target="_blank" rel="noopener">GitHub</a></nav>
+  <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+</header>
+<main id="contenu">
+
+<div class="lesson-wrap">
+  <aside class="side" aria-label="Modules">
+    <p class="side-title">Les 10 modules</p>
+    <ol class="side-list"><li data-module="01-methode-securite"><a href="01-methode-securite.html"><span class="side-num">1</span>Méthode de travail et sécurité</a></li><li data-module="02-git-github"><a href="02-git-github.html"><span class="side-num">2</span>Git et GitHub</a></li><li data-module="03-domaines-dns"><a href="03-domaines-dns.html" aria-current="page"><span class="side-num">3</span>Domaines et DNS</a></li><li data-module="04-serveur-vps"><a href="04-serveur-vps.html"><span class="side-num">4</span>Ton serveur VPS sur DigitalOcean</a></li><li data-module="05-aapanel"><a href="05-aapanel.html"><span class="side-num">5</span>aaPanel, sites web et HTTPS</a></li><li data-module="06-nodejs"><a href="06-nodejs.html"><span class="side-num">6</span>Node.js, de ton ordinateur au serveur</a></li><li data-module="07-python-automatisation"><a href="07-python-automatisation.html"><span class="side-num">7</span>Python et automatisation</a></li><li data-module="08-ollama-mande-ia"><a href="08-ollama-mande-ia.html"><span class="side-num">8</span>IA locale avec Ollama et Mande-IA v3</a></li><li data-module="09-open-webui"><a href="09-open-webui.html"><span class="side-num">9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a></li><li data-module="10-projet-final"><a href="10-projet-final.html"><span class="side-num">10</span>Construire et présenter ton projet</a></li></ol>
+  </aside>
+  <article class="lesson" data-module="03-domaines-dns">
+    <header class="lesson-head">
+      <p class="lesson-meta">Module 3 sur 10, infrastructure, environ 2 heures</p>
+      <h1>Domaines et DNS</h1>
+      <p class="lesson-goal">Choisir un nom de domaine, l&#39;acheter en sécurité et le relier à ton serveur.</p>
+      <details class="toc"><summary>Dans ce module</summary><ol><li><a href="#ce-qu-39-est-un-nom-de-domaine">Ce qu&#39;est un nom de domaine</a></li><li><a href="#1-choisir-un-bon-nom">1. Choisir un bon nom</a></li><li><a href="#2-acheter-le-domaine">2. Acheter le domaine</a></li><li><a href="#3-les-enregistrements-dns-a-connaitre">3. Les enregistrements DNS à connaître</a></li><li><a href="#4-relier-le-domaine-a-ton-serveur">4. Relier le domaine à ton serveur</a></li><li><a href="#5-verifier-que-ca-marche">5. Vérifier que ça marche</a></li><li><a href="#erreurs-frequentes">Erreurs fréquentes</a></li><li><a href="#exercice">Exercice</a></li><li><a href="#verifie-que-tu-sais">Vérifie que tu sais</a></li></ol></details>
+    </header>
+    <div class="prose">
+<h2 id="ce-qu-39-est-un-nom-de-domaine">Ce qu&#39;est un nom de domaine</h2>
+<p>Les serveurs se trouvent par leur adresse IP, par exemple <code>203.0.113.10</code>. Personne ne retient ça. Le <strong>nom de domaine</strong> (<code>mintaservices.com</code>) est le nom facile, et le <strong>DNS</strong> est l&#39;annuaire qui traduit le nom en adresse IP.</p>
+<h2 id="1-choisir-un-bon-nom">1. Choisir un bon nom</h2>
+<ul>
+<li><strong>Court</strong> et facile à dire au téléphone : on doit pouvoir l&#39;épeler sans erreur.</li>
+<li><strong>Sans tiret ni chiffre</strong> si possible.</li>
+<li><strong>La bonne extension</strong> : <code>.com</code> pour tout le monde, <code>.africa</code> pour un projet africain, <code>.ml</code> pour le Mali.</li>
+<li>Vérifie que le même nom est libre sur Facebook, WhatsApp Business et TikTok.</li>
+</ul>
+<h2 id="2-acheter-le-domaine">2. Acheter le domaine</h2>
+<p>Les <code>.com</code> et <code>.africa</code> s&#39;achètent chez un <strong>registraire</strong> comme Namecheap, Cloudflare ou Porkbun, avec une carte bancaire. Pour un <code>.ml</code>, adresse-toi à un revendeur agréé pour l&#39;extension malienne.</p>
+<p>Au moment de l&#39;achat :</p>
+<ol>
+<li><strong>Active la protection de la vie privée</strong> (souvent gratuite, appelée « Withheld for Privacy » chez Namecheap) : ton nom, ton téléphone et ton adresse ne seront pas publics.</li>
+<li><strong>Active la 2FA</strong> sur le compte du registraire. Celui qui contrôle ce compte contrôle ton site et tes e-mails.</li>
+<li><strong>Active le renouvellement automatique</strong> : un domaine expiré peut être racheté par quelqu&#39;un d&#39;autre.</li>
+</ol>
+<h2 id="3-les-enregistrements-dns-a-connaitre">3. Les enregistrements DNS à connaître</h2>
+<div class="table"><table><thead><tr><th>Type</th><th>À quoi il sert</th><th>Exemple</th></tr></thead><tbody><tr><td><strong>A</strong></td><td>Relie un nom à une adresse IPv4</td><td><code>@</code> → <code>203.0.113.10</code></td></tr>
+<tr><td><strong>AAAA</strong></td><td>Pareil, pour une adresse IPv6</td><td><code>@</code> → <code>2001:db8::10</code></td></tr>
+<tr><td><strong>CNAME</strong></td><td>Fait d&#39;un nom l&#39;alias d&#39;un autre nom</td><td><code>www</code> → <code>mintaservices.com</code></td></tr>
+<tr><td><strong>MX</strong></td><td>Indique le serveur qui reçoit les e-mails</td><td><code>@</code> → <code>mail.mintaservices.com</code></td></tr>
+<tr><td><strong>TXT</strong></td><td>Texte de vérification (Google, Meta, SPF pour les e-mails)</td><td><code>v=spf1 ...</code></td></tr></tbody></table></div>
+<p><code>@</code> veut dire « le domaine lui-même ». Un <strong>sous-domaine</strong> comme <code>ia.mintaservices.com</code> est simplement un enregistrement A nommé <code>ia</code>.</p>
+<p>Le <strong>TTL</strong> est le temps pendant lequel les autres serveurs gardent l&#39;information en mémoire. Mets 300 secondes (5 minutes) pendant que tu fais des réglages.</p>
+<h2 id="4-relier-le-domaine-a-ton-serveur">4. Relier le domaine à ton serveur</h2>
+<p>Dans le panneau DNS de ton registraire (menu « Advanced DNS » chez Namecheap) :</p>
+<div class="table"><table><thead><tr><th>Type</th><th>Hôte</th><th>Valeur</th></tr></thead><tbody><tr><td>A</td><td><code>@</code></td><td>l&#39;adresse IP de ton VPS (module 4)</td></tr>
+<tr><td>A</td><td><code>www</code></td><td>la même adresse IP</td></tr>
+<tr><td>A</td><td><code>ia</code></td><td>la même adresse IP, si tu veux un sous-domaine</td></tr></tbody></table></div>
+<h2 id="5-verifier-que-ca-marche">5. Vérifier que ça marche</h2>
+<p>Les changements prennent de quelques minutes à quelques heures. Vérifie :</p>
+<div class="code"><pre><code data-lang="bash">nslookup mondomaine.com</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Sur Linux ou macOS, tu peux aussi utiliser :</p>
+<div class="code"><pre><code data-lang="bash">dig +short mondomaine.com</code></pre><button class="copy" type="button">Copier</button></div>
+<p>La réponse doit être l&#39;adresse IP de ton serveur. Le site <a href="https://dnschecker.org" target="_blank" rel="noopener">dnschecker.org</a> montre la propagation dans le monde entier.</p>
+<h2 id="erreurs-frequentes">Erreurs fréquentes</h2>
+<ul>
+<li><strong>Deux enregistrements A pour le même nom</strong> avec des adresses différentes : le site s&#39;ouvre une fois sur deux.</li>
+<li><strong>Oublier <code>www</code></strong> : <code>mondomaine.com</code> marche, <code>www.mondomaine.com</code> non.</li>
+<li><strong>Changer les serveurs DNS (« nameservers ») par erreur</strong> : tes enregistrements disparaissent. Garde ceux du registraire tant que tu n&#39;as pas de raison de changer.</li>
+</ul>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Trouve trois noms possibles pour ton projet final et vérifie qu&#39;ils sont libres.</li>
+<li>Si tu as un domaine, ajoute un enregistrement A <code>@</code> et <code>www</code> vers l&#39;adresse IP de ton serveur (tu l&#39;obtiens au module 4).</li>
+<li>Vérifie avec <code>nslookup</code>, puis note le résultat dans <code>notes/module-03.md</code>.</li>
+</ol>
+<h2 id="verifie-que-tu-sais">Vérifie que tu sais</h2>
+<ul>
+<li>Quelle est la différence entre un enregistrement A et un CNAME ?</li>
+<li>Pourquoi activer la protection de la vie privée et la 2FA chez le registraire ?</li>
+<li>Comment créer le sous-domaine <code>ia.mondomaine.com</code> ?</li>
+</ul>
+
+    </div>
+    <div class="done-box">
+      <button class="btn btn-done" type="button" data-done="03-domaines-dns" aria-pressed="false">J'ai terminé ce module</button>
+      <p>Fais l'exercice avant de cocher : c'est lui qui t'apprend le plus.</p>
+    </div>
+    <nav class="pager" aria-label="Modules précédent et suivant">
+      <a class="pager-prev" href="02-git-github.html"><span>Module 2</span>Git et GitHub</a>
+      <a class="pager-next" href="04-serveur-vps.html"><span>Module 4</span>Ton serveur VPS sur DigitalOcean</a>
+    </nav>
+  </article>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
+    <p><a href="https://wa.me/22377295259?text=Bonjour%2C%20j%E2%80%99ai%20une%20question%20sur%20Minta%20Academy." target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:academy@mintaservices.com">academy@mintaservices.com</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
+  </div>
+</footer>
+<script src="assets/app.js?v=1" defer></script>
+</body>
+</html>

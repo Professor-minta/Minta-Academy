@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 2 : Git et GitHub, Minta Academy</title>
+<meta name="description" content="Suivre chaque changement de ton code, le sauvegarder sur GitHub et travailler à plusieurs sans rien casser.">
+<meta name="theme-color" content="#14213d">
+<meta property="og:title" content="Module 2 : Git et GitHub, Minta Academy">
+<meta property="og:description" content="Suivre chaque changement de ton code, le sauvegarder sur GitHub et travailler à plusieurs sans rien casser.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ma-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy</span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Cours</a><a href="entreprises.html">Entreprises</a><a href="https://github.com/Professor-minta/Minta-Academy" target="_blank" rel="noopener">GitHub</a></nav>
+  <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
+</header>
+<main id="contenu">
+
+<div class="lesson-wrap">
+  <aside class="side" aria-label="Modules">
+    <p class="side-title">Les 10 modules</p>
+    <ol class="side-list"><li data-module="01-methode-securite"><a href="01-methode-securite.html"><span class="side-num">1</span>Méthode de travail et sécurité</a></li><li data-module="02-git-github"><a href="02-git-github.html" aria-current="page"><span class="side-num">2</span>Git et GitHub</a></li><li data-module="03-domaines-dns"><a href="03-domaines-dns.html"><span class="side-num">3</span>Domaines et DNS</a></li><li data-module="04-serveur-vps"><a href="04-serveur-vps.html"><span class="side-num">4</span>Ton serveur VPS sur DigitalOcean</a></li><li data-module="05-aapanel"><a href="05-aapanel.html"><span class="side-num">5</span>aaPanel, sites web et HTTPS</a></li><li data-module="06-nodejs"><a href="06-nodejs.html"><span class="side-num">6</span>Node.js, de ton ordinateur au serveur</a></li><li data-module="07-python-automatisation"><a href="07-python-automatisation.html"><span class="side-num">7</span>Python et automatisation</a></li><li data-module="08-ollama-mande-ia"><a href="08-ollama-mande-ia.html"><span class="side-num">8</span>IA locale avec Ollama et Mande-IA v3</a></li><li data-module="09-open-webui"><a href="09-open-webui.html"><span class="side-num">9</span>Open WebUI, une IA hors ligne pour toute l&#39;équipe</a></li><li data-module="10-projet-final"><a href="10-projet-final.html"><span class="side-num">10</span>Construire et présenter ton projet</a></li></ol>
+  </aside>
+  <article class="lesson" data-module="02-git-github">
+    <header class="lesson-head">
+      <p class="lesson-meta">Module 2 sur 10, fondations, environ 3 heures</p>
+      <h1>Git et GitHub</h1>
+      <p class="lesson-goal">Suivre chaque changement de ton code, le sauvegarder sur GitHub et travailler à plusieurs sans rien casser.</p>
+      <details class="toc"><summary>Dans ce module</summary><ol><li><a href="#pourquoi-git">Pourquoi Git</a></li><li><a href="#1-installer-git">1. Installer Git</a></li><li><a href="#2-les-4-commandes-de-tous-les-jours">2. Les 4 commandes de tous les jours</a></li><li><a href="#3-le-fichier-gitignore">3. Le fichier .gitignore</a></li><li><a href="#4-creer-ton-compte-github-et-le-securiser">4. Créer ton compte GitHub et le sécuriser</a></li><li><a href="#5-envoyer-un-projet-sur-github">5. Envoyer un projet sur GitHub</a></li><li><a href="#6-travailler-en-equipe-branches-et-pull-requests">6. Travailler en équipe : branches et Pull Requests</a></li><li><a href="#7-reparer-une-erreur">7. Réparer une erreur</a></li><li><a href="#exercice">Exercice</a></li><li><a href="#verifie-que-tu-sais">Vérifie que tu sais</a></li></ol></details>
+    </header>
+    <div class="prose">
+<h2 id="pourquoi-git">Pourquoi Git</h2>
+<p>Sans Git, on finit avec <code>site-final.html</code>, <code>site-final-v2.html</code> et <code>site-VRAI-final.html</code>. Git garde l&#39;historique de chaque modification : tu peux revenir en arrière, voir qui a changé quoi et travailler à plusieurs sur le même projet. <strong>GitHub</strong> garde une copie de cet historique en ligne et permet de partager ton code.</p>
+<h2 id="1-installer-git">1. Installer Git</h2>
+<ul>
+<li><strong>Windows</strong> : télécharge Git sur <a href="https://git-scm.com" target="_blank" rel="noopener">git-scm.com</a>, installe-le avec les options proposées, puis ouvre <strong>Git Bash</strong> ou PowerShell.</li>
+<li><strong>Ubuntu / Debian</strong> : <code>sudo apt update &amp;&amp; sudo apt install -y git</code></li>
+<li><strong>macOS</strong> : tape <code>git --version</code>, macOS propose de l&#39;installer.</li>
+</ul>
+<p>Présente-toi à Git (une seule fois par ordinateur) :</p>
+<div class="code"><pre><code data-lang="bash">git config --global user.name &quot;Ton Nom&quot;
+git config --global user.email &quot;ton-email@exemple.com&quot;
+git config --global init.defaultBranch main</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="2-les-4-commandes-de-tous-les-jours">2. Les 4 commandes de tous les jours</h2>
+<div class="code"><pre><code data-lang="bash">git status                  # qu&#39;est-ce qui a changé ?
+git add index.html          # préparer un fichier pour la sauvegarde
+git commit -m &quot;Ajoute la page d&#39;accueil&quot;   # sauvegarder avec un message clair
+git log --oneline           # voir l&#39;historique</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Un bon message de commit dit <strong>ce que fait le changement</strong> : « Corrige le menu sur téléphone », pas « modif » ou « update ».</p>
+<h2 id="3-le-fichier-gitignore">3. Le fichier .gitignore</h2>
+<p>Il dit à Git quels fichiers ne <strong>jamais</strong> envoyer. Crée-le dès le début de chaque projet :</p>
+<div class="code"><pre><code data-lang="text">.env
+node_modules/
+__pycache__/
+*.log
+.DS_Store</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Vérifie avant chaque commit avec <code>git status</code> : si <code>.env</code> apparaît, arrête-toi. N&#39;utilise pas <code>git add .</code> sans avoir regardé la liste.</p>
+<h2 id="4-creer-ton-compte-github-et-le-securiser">4. Créer ton compte GitHub et le sécuriser</h2>
+<ol>
+<li>Crée ton compte sur <a href="https://github.com" target="_blank" rel="noopener">github.com</a>.</li>
+<li>Active la 2FA : <strong>Settings → Password and authentication → Two-factor authentication</strong>.</li>
+<li>Ajoute ta clé SSH du module 1 : <strong>Settings → SSH and GPG keys → New SSH key</strong>, colle le contenu de <code>id_ed25519.pub</code>.</li>
+<li>Teste la connexion :</li>
+</ol>
+<div class="code"><pre><code data-lang="bash">ssh -T git@github.com</code></pre><button class="copy" type="button">Copier</button></div>
+<p>GitHub répond « Hi TonNom! You&#39;ve successfully authenticated ».</p>
+<h2 id="5-envoyer-un-projet-sur-github">5. Envoyer un projet sur GitHub</h2>
+<p>Sur GitHub, clique sur <strong>New repository</strong>, donne-lui un nom (par exemple <code>minta-academy-notes</code>), laisse-le vide, puis :</p>
+<div class="code"><pre><code data-lang="bash">cd ~/minta-academy/notes
+git init
+git add module-01.md .gitignore
+git commit -m &quot;Notes du module 1&quot;
+git remote add origin git@github.com:TonNom/minta-academy-notes.git
+git push -u origin main</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Ensuite, pour chaque nouveau travail : <code>git add</code>, <code>git commit</code>, <code>git push</code>.</p>
+<h2 id="6-travailler-en-equipe-branches-et-pull-requests">6. Travailler en équipe : branches et Pull Requests</h2>
+<p>Une <strong>branche</strong> est une copie de travail. On y fait ses changements sans toucher à <code>main</code>, la version qui tourne en production.</p>
+<div class="code"><pre><code data-lang="bash">git switch -c nouvelle-page     # créer une branche et y aller
+# ... modifications ...
+git add page.html
+git commit -m &quot;Ajoute la page Contact&quot;
+git push -u origin nouvelle-page</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Sur GitHub, un bouton <strong>Compare &amp; pull request</strong> apparaît. La <strong>Pull Request</strong> (PR) montre les changements : on relit, on discute, puis on clique sur <strong>Merge</strong>. C&#39;est exactement comme ça que Mande-IA est développé.</p>
+<p>Sur le serveur, on récupère ensuite la nouvelle version :</p>
+<div class="code"><pre><code data-lang="bash">git pull</code></pre><button class="copy" type="button">Copier</button></div>
+<h2 id="7-reparer-une-erreur">7. Réparer une erreur</h2>
+<div class="code"><pre><code data-lang="bash">git restore fichier.html        # annuler les changements non sauvegardés d&#39;un fichier
+git restore --staged .env       # retirer un fichier ajouté par erreur avant le commit</code></pre><button class="copy" type="button">Copier</button></div>
+<p>Si une clé est déjà partie sur GitHub, la supprimer du fichier ne suffit pas : elle reste dans l&#39;historique. <strong>Change la clé</strong> chez le service concerné (règle 4 du module 1).</p>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Installe Git et configure ton nom et ton e-mail.</li>
+<li>Crée le dépôt <code>minta-academy-notes</code> sur GitHub, en privé.</li>
+<li>Envoie-y ton fichier <code>module-01.md</code> avec un <code>.gitignore</code>.</li>
+<li>Crée une branche <code>module-02</code>, ajoute <code>module-02.md</code>, ouvre une Pull Request et fusionne-la.</li>
+</ol>
+<h2 id="verifie-que-tu-sais">Vérifie que tu sais</h2>
+<ul>
+<li>Quelle commande te montre les fichiers modifiés ?</li>
+<li>Pourquoi travailler dans une branche plutôt que directement sur <code>main</code> ?</li>
+<li>Que fais-tu si <code>.env</code> apparaît dans <code>git status</code> ?</li>
+</ul>
+
+    </div>
+    <div class="done-box">
+      <button class="btn btn-done" type="button" data-done="02-git-github" aria-pressed="false">J'ai terminé ce module</button>
+      <p>Fais l'exercice avant de cocher : c'est lui qui t'apprend le plus.</p>
+    </div>
+    <nav class="pager" aria-label="Modules précédent et suivant">
+      <a class="pager-prev" href="01-methode-securite.html"><span>Module 1</span>Méthode de travail et sécurité</a>
+      <a class="pager-next" href="03-domaines-dns.html"><span>Module 3</span>Domaines et DNS</a>
+    </nav>
+  </article>
+</div>
+</main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg><span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
+    <p><a href="https://wa.me/22377295259?text=Bonjour%2C%20j%E2%80%99ai%20une%20question%20sur%20Minta%20Academy." target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:academy@mintaservices.com">academy@mintaservices.com</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
+  </div>
+</footer>
+<script src="assets/app.js?v=1" defer></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "minta-academy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Formation gratuite et ouverte Minta Academy : cours et site web",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "marked": "15.0.12"
+  }
+}
