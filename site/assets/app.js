@@ -52,6 +52,24 @@
     });
   });
 
+  const inscription = document.querySelector('[data-inscription]');
+  if (inscription) inscription.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(inscription);
+    const value = (name) => String(data.get(name) || '').trim();
+    const lines = [
+      'Bonjour Minta Academy, je souhaite me pré-inscrire à la formation à Bamako.',
+      '',
+      `Nom : ${value('nom')}`,
+      `WhatsApp : ${value('tel')}`,
+      `Formule : ${value('formule')}`,
+      `Disponibilités : ${value('dispo')}`,
+      `Ordinateur portable : ${value('pc')}`
+    ];
+    if (value('quartier')) lines.push(`Quartier ou ville : ${value('quartier')}`);
+    window.location.href = `https://wa.me/${inscription.dataset.inscription}?text=${encodeURIComponent(lines.join('\n'))}`;
+  });
+
   const theme = document.querySelector('.theme');
   if (theme) theme.addEventListener('click', () => {
     const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;

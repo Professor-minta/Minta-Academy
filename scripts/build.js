@@ -9,7 +9,7 @@ const SITE_URL = 'https://mintaservices.com/academy/';
 const WHATSAPP = '22377295259';
 const EMAIL = 'academy@mintaservices.com';
 const GITHUB = 'https://github.com/Professor-minta/Minta-Academy';
-const VERSION = '1';
+const VERSION = '2';
 
 const escape = (text) => String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const slugify = (text) => String(text).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/<[^>]+>/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -59,7 +59,7 @@ const modules = fs.readdirSync(path.join(ROOT, 'modules')).filter((f) => /^\d{2}
 const logo = `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg>`;
 
 function page({ title, description, body, current, prefix = '' }) {
-  const nav = [['index.html', 'Cours', 'cours'], ['entreprises.html', 'Entreprises', 'entreprises']]
+  const nav = [['index.html', 'Cours', 'cours'], ['bamako.html', 'Bamako', 'bamako'], ['entreprises.html', 'Entreprises', 'entreprises']]
     .map(([href, label, key]) => `<a href="${prefix}${href}"${current === key ? ' aria-current="page"' : ''}>${label}</a>`).join('');
   return `<!doctype html>
 <html lang="fr">
@@ -140,6 +140,14 @@ function home() {
 <span class="t-line t-answer" data-delay="2">I ni ce ! Un VPS est un ordinateur qui tourne jour et nuit dans un centre de données. Tu t'y connectes avec SSH et tu y installes ton site ou ton application. On le voit au module 4.</span></pre>
     <figcaption><span class="dot" aria-hidden="true"></span>Réponse calculée sur ce PC, sans connexion</figcaption>
   </figure>
+</section>
+
+<section class="pro pro-bamako" aria-labelledby="bamako-titre">
+  <div>
+    <h2 id="bamako-titre">La formation en présentiel à Bamako</h2>
+    <p>12 séances pratiques avec un formateur, un vrai serveur et un groupe. Première promotion : 15 places. La pré-inscription est gratuite.</p>
+  </div>
+  <a class="btn btn-gold" href="bamako.html">Voir le programme et se pré-inscrire</a>
 </section>
 
 <section class="parcours" aria-labelledby="parcours-titre">
@@ -240,11 +248,65 @@ ${html}
   return page({ title: 'Pack Mande-IA entreprise : IA locale sans internet, Minta Academy', description: data.description, body: content, current: 'entreprises' });
 }
 
+function bamako() {
+  const { data, body } = frontMatter(fs.readFileSync(path.join(ROOT, 'pages', 'bamako.md'), 'utf8'));
+  const html = markdown().render(body);
+  const question = 'Bonjour, j’ai une question sur la formation Minta Academy à Bamako.';
+  const content = `
+<div class="ent">
+  <header class="ent-head">
+    <h1>${escape(data.titre)}</h1>
+    <ul class="facts">
+      <li>12 séances</li>
+      <li>15 places</li>
+      <li>Bamako</li>
+      <li>Dès 50 000 FCFA</li>
+    </ul>
+    <div class="actions">
+      <a class="btn btn-gold" href="#inscription">Me pré-inscrire</a>
+      <a class="btn btn-line" href="${wa(question)}" target="_blank" rel="noopener">Poser une question sur WhatsApp</a>
+    </div>
+  </header>
+  <div class="prose prose-ent">
+${html}
+  </div>
+  <section class="inscription" id="inscription" aria-labelledby="inscription-titre">
+    <h2 id="inscription-titre">Pré-inscription</h2>
+    <p>Gratuite et sans engagement. Le formulaire prépare un message WhatsApp : tu n'as plus qu'à l'envoyer.</p>
+    <form class="form" data-inscription="${WHATSAPP}">
+      <label>Nom et prénom<input name="nom" required autocomplete="name"></label>
+      <label>Numéro WhatsApp<input name="tel" type="tel" required autocomplete="tel" inputmode="tel" placeholder="+223 …"></label>
+      <label>Formule<select name="formule" required>
+        <option>Formation complète (75 000 FCFA)</option>
+        <option>Formation complète, étudiant (50 000 FCFA)</option>
+        <option>Atelier d'un sujet (15 000 FCFA)</option>
+        <option>Formation en entreprise (sur devis)</option>
+      </select></label>
+      <label>Tes disponibilités<select name="dispo">
+        <option>Samedis</option>
+        <option>Soirs en semaine</option>
+        <option>Journées en semaine</option>
+        <option>Peu importe</option>
+      </select></label>
+      <label>As-tu un ordinateur portable ?<select name="pc">
+        <option>Oui</option>
+        <option>Non</option>
+      </select></label>
+      <label>Ton quartier ou ta ville <small>(facultatif)</small><input name="quartier" autocomplete="address-level2"></label>
+      <button class="btn btn-gold" type="submit">Envoyer ma pré-inscription sur WhatsApp</button>
+      <p class="form-note">Rien n'est enregistré sur le site : tes informations partent seulement dans le message WhatsApp que tu envoies. Sans WhatsApp, écris à <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
+    </form>
+  </section>
+</div>`;
+  return page({ title: 'Formation Minta Academy à Bamako : 12 séances, 15 places', description: data.description, body: content, current: 'bamako' });
+}
+
 fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
 for (const f of fs.readdirSync(OUT)) if (f.endsWith('.html')) fs.unlinkSync(path.join(OUT, f));
 fs.writeFileSync(path.join(OUT, 'index.html'), home());
 modules.forEach((m, i) => fs.writeFileSync(path.join(OUT, `${m.slug}.html`), modulePage(m, i)));
 fs.writeFileSync(path.join(OUT, 'entreprises.html'), entreprises());
+fs.writeFileSync(path.join(OUT, 'bamako.html'), bamako());
 fs.writeFileSync(path.join(OUT, 'assets', 'logo.svg'), logo.replace('class="logo-mark" ', 'xmlns="http://www.w3.org/2000/svg" ').replace(' aria-hidden="true"', ''));
-fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', ...modules.map((m) => `${m.slug}.html`), 'entreprises.html'].map((p) => `  <url><loc>${SITE_URL}${p}</loc></url>`).join('\n')}\n</urlset>\n`);
-console.log(`Site généré dans site/ : accueil, ${modules.length} modules, entreprises.`);
+fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', ...modules.map((m) => `${m.slug}.html`), 'bamako.html', 'entreprises.html'].map((p) => `  <url><loc>${SITE_URL}${p}</loc></url>`).join('\n')}\n</urlset>\n`);
+console.log(`Site généré dans site/ : accueil, ${modules.length} modules, Bamako, entreprises.`);
