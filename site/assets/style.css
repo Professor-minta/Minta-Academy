@@ -199,3 +199,19 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.1; letter-spacing: -0.0
 .foot-in p { margin: 0; }
 .foot-brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 700; }
 .foot-in p:last-child { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+/* Bamako */
+.facts { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 28px; padding: 0; list-style: none; }
+.facts li { padding: 8px 16px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-weight: 700; font-size: 16px; }
+.pro-bamako > div { border-left-color: var(--leaf); }
+.inscription { max-width: 46rem; margin-top: 56px; padding: clamp(20px, 4vw, 32px); border-radius: 18px; background: var(--surface); border: 1px solid var(--line); scroll-margin-top: 84px; }
+.inscription h2 { font-size: 1.8rem; }
+.inscription > p { color: var(--mute); margin: 10px 0 22px; }
+.form { display: grid; gap: 16px; }
+.form label { display: grid; gap: 6px; font-weight: 700; font-size: 16px; }
+.form small { font-weight: 400; color: var(--mute); }
+.form input, .form select { width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); color: var(--ink); font: 400 17px/1.4 var(--text); }
+.form-note { margin: 0; font-size: 15px; color: var(--mute); }
+@media (min-width: 720px) { .form { grid-template-columns: 1fr 1fr; } .form .btn, .form-note { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .nav a[href^="https://github.com"] { display: none; } }
+@media (max-width: 400px) { .top { gap: 10px; } .nav { gap: 2px; } .nav a { padding: 8px 8px; font-size: 14.5px; } }
