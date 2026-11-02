@@ -9,7 +9,7 @@ const SITE_URL = 'https://mintaservices.com/academy/';
 const WHATSAPP = '22377295259';
 const EMAIL = 'academy@mintaservices.com';
 const GITHUB = 'https://github.com/Professor-minta/Minta-Academy';
-const VERSION = '2';
+const VERSION = '3';
 
 const escape = (text) => String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const slugify = (text) => String(text).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/<[^>]+>/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -56,7 +56,7 @@ const modules = fs.readdirSync(path.join(ROOT, 'modules')).filter((f) => /^\d{2}
   return { file, slug: file.replace(/\.md$/, ''), numero: Number(data.numero), titre: data.titre, phase: data.phase, duree: data.duree, objectif: data.objectif, body };
 });
 
-const logo = `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="14" width="7" height="15" rx="3.5" fill="#1a9e5a"/><rect x="12.5" y="8" width="7" height="21" rx="3.5" fill="#f2b705"/><rect x="22" y="3" width="7" height="26" rx="3.5" fill="#d4432e"/></svg>`;
+const logo = (prefix = '') => `<img class="logo-mark" src="${prefix}assets/minta-academy-192.png" alt="" width="34" height="34">`;
 
 function page({ title, description, body, current, prefix = '' }) {
   const nav = [['index.html', 'Cours', 'cours'], ['bamako.html', 'Bamako', 'bamako'], ['entreprises.html', 'Entreprises', 'entreprises']]
@@ -72,7 +72,16 @@ function page({ title, description, body, current, prefix = '' }) {
 <meta property="og:title" content="${escape(title)}">
 <meta property="og:description" content="${escape(description)}">
 <meta property="og:type" content="website">
-<link rel="icon" href="${prefix}assets/logo.svg" type="image/svg+xml">
+<meta property="og:site_name" content="Minta Academy">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="${SITE_URL}assets/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo de Minta Academy : cours tech gratuits et formation à Bamako">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${SITE_URL}assets/partage.jpg">
+<link rel="icon" href="${prefix}assets/minta-academy-192.png" type="image/png">
+<link rel="apple-touch-icon" href="${prefix}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400&display=swap">
@@ -82,7 +91,7 @@ function page({ title, description, body, current, prefix = '' }) {
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="top">
-  <a class="brand" href="${prefix}index.html">${logo}<span>Minta Academy</span></a>
+  <a class="brand" href="${prefix}index.html">${logo(prefix)}<span>Minta Academy</span></a>
   <nav class="nav" aria-label="Navigation principale">${nav}<a href="${GITHUB}" target="_blank" rel="noopener">GitHub</a></nav>
   <button class="theme" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button>
 </header>
@@ -91,7 +100,7 @@ ${body}
 </main>
 <footer class="foot">
   <div class="foot-in">
-    <p class="foot-brand">${logo}<span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
+    <p class="foot-brand">${logo(prefix)}<span>Minta Academy, par Minta Services. Missira, Ségou, Mali.</span></p>
     <p>Les cours sont sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a> : copie-les, traduis-les et partage-les en citant Minta Academy.</p>
     <p><a href="${wa('Bonjour, j’ai une question sur Minta Academy.')}" target="_blank" rel="noopener">WhatsApp +223 77 29 52 59</a> <a href="mailto:${EMAIL}">${EMAIL}</a> <a href="https://ia.mintaservices.com" target="_blank" rel="noopener">Mande-IA</a> <a href="https://mintaservices.com" target="_blank" rel="noopener">mintaservices.com</a></p>
   </div>
@@ -307,6 +316,5 @@ fs.writeFileSync(path.join(OUT, 'index.html'), home());
 modules.forEach((m, i) => fs.writeFileSync(path.join(OUT, `${m.slug}.html`), modulePage(m, i)));
 fs.writeFileSync(path.join(OUT, 'entreprises.html'), entreprises());
 fs.writeFileSync(path.join(OUT, 'bamako.html'), bamako());
-fs.writeFileSync(path.join(OUT, 'assets', 'logo.svg'), logo.replace('class="logo-mark" ', 'xmlns="http://www.w3.org/2000/svg" ').replace(' aria-hidden="true"', ''));
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', ...modules.map((m) => `${m.slug}.html`), 'bamako.html', 'entreprises.html'].map((p) => `  <url><loc>${SITE_URL}${p}</loc></url>`).join('\n')}\n</urlset>\n`);
 console.log(`Site généré dans site/ : accueil, ${modules.length} modules, Bamako, entreprises.`);
