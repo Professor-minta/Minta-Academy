@@ -44,6 +44,12 @@ Chaque module contient la leçon, les commandes à copier, un exercice et des qu
 | [`ressources/python`](ressources/python) | Scripts de sauvegarde, de surveillance de sites et de calcul sur CSV | 7 |
 | [`ressources/ollama`](ressources/ollama) | `Modelfile` d'exemple et scripts pour lancer Open WebUI hors ligne | 8 et 9 |
 
+## La formation en présentiel à Bamako
+
+Les cours en ligne sont gratuits. La formation à Bamako est payante : 12 séances avec un formateur, **du lundi 7 au jeudi 24 décembre 2026**, du lundi au jeudi de 18 h à 20 h. **75 000 FCFA** (50 000 FCFA pour les étudiants), 15 places. Voir [le programme et la pré-inscription](https://mintaservices.com/academy/bamako.html).
+
+Pour changer les dates ou le prix : `PROMO` en haut de `scripts/build.js` et `pages/bamako.md`, puis `npm run build`.
+
 ## Pour les entreprises
 
 Minta Services installe Mande-IA **dans les locaux** des entreprises, écoles et administrations : Ollama, le modèle Mande-IA v3, Open WebUI avec un compte par employé, vos documents et la formation de l'équipe. Tout fonctionne sans internet et les données ne quittent pas vos machines. Le prix est fixé sur devis. Voir [la page Entreprises](https://mintaservices.com/academy/entreprises.html) ou écrire sur [WhatsApp](https://wa.me/22377295259).

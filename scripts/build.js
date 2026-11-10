@@ -9,7 +9,15 @@ const SITE_URL = 'https://mintaservices.com/academy/';
 const WHATSAPP = '22377295259';
 const EMAIL = 'academy@mintaservices.com';
 const GITHUB = 'https://github.com/Professor-minta/Minta-Academy';
-const VERSION = '3';
+const VERSION = '4';
+// Première promotion à Bamako : change ces lignes, puis lance « npm run build ».
+const PROMO = {
+  debut: 'lundi 7 décembre 2026',
+  fin: 'jeudi 24 décembre 2026',
+  horaire: 'du lundi au jeudi, de 18 h à 20 h',
+  prix: '75 000 FCFA',
+  prixEtudiant: '50 000 FCFA',
+};
 
 const escape = (text) => String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const slugify = (text) => String(text).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/<[^>]+>/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -154,7 +162,7 @@ function home() {
 <section class="pro pro-bamako" aria-labelledby="bamako-titre">
   <div>
     <h2 id="bamako-titre">La formation en présentiel à Bamako</h2>
-    <p>12 séances pratiques avec un formateur, un vrai serveur et un groupe. Première promotion : 15 places. La pré-inscription est gratuite.</p>
+    <p>12 séances pratiques avec un formateur, un vrai serveur et un groupe. Première promotion : <strong>du ${PROMO.debut} au ${PROMO.fin}</strong>, ${PROMO.horaire}. ${PROMO.prix}, ${PROMO.prixEtudiant} pour les étudiants. 15 places.</p>
   </div>
   <a class="btn btn-gold" href="bamako.html">Voir le programme et se pré-inscrire</a>
 </section>
@@ -266,10 +274,10 @@ function bamako() {
   <header class="ent-head">
     <h1>${escape(data.titre)}</h1>
     <ul class="facts">
-      <li>12 séances</li>
+      <li>Début : ${PROMO.debut}</li>
+      <li>12 séances, le soir</li>
       <li>15 places</li>
-      <li>Bamako</li>
-      <li>Dès 50 000 FCFA</li>
+      <li>${PROMO.prix}, étudiants ${PROMO.prixEtudiant}</li>
     </ul>
     <div class="actions">
       <a class="btn btn-gold" href="#inscription">Me pré-inscrire</a>
@@ -292,10 +300,9 @@ ${html}
         <option>Formation en entreprise (sur devis)</option>
       </select></label>
       <label>Tes disponibilités<select name="dispo">
-        <option>Samedis</option>
-        <option>Soirs en semaine</option>
-        <option>Journées en semaine</option>
-        <option>Peu importe</option>
+        <option>Promotion du ${PROMO.debut}, le soir</option>
+        <option>Une prochaine promotion, le soir</option>
+        <option>Une prochaine promotion, le samedi</option>
       </select></label>
       <label>As-tu un ordinateur portable ?<select name="pc">
         <option>Oui</option>
@@ -307,7 +314,7 @@ ${html}
     </form>
   </section>
 </div>`;
-  return page({ title: 'Formation Minta Academy à Bamako : 12 séances, 15 places', description: data.description, body: content, current: 'bamako' });
+  return page({ title: 'Formation Minta Academy à Bamako : début le 7 décembre 2026, 15 places', description: data.description, body: content, current: 'bamako' });
 }
 
 fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
