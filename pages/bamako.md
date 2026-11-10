@@ -1,9 +1,17 @@
 ---
 titre: La formation Minta Academy à Bamako
-description: 12 séances en présentiel à Bamako pour mettre en ligne ton site, ton serveur et ton IA locale. 15 places. Pré-inscription gratuite sur WhatsApp.
+description: 12 séances en présentiel à Bamako, du 7 au 24 décembre 2026, pour mettre en ligne ton site, ton serveur et ton IA locale. 75 000 FCFA, 15 places.
 ---
 
 Les cours en ligne de Minta Academy restent **gratuits**. La formation à Bamako ajoute ce qu'un écran ne donne pas : un formateur à côté de toi, un vrai serveur pour pratiquer et un groupe pour avancer ensemble.
+
+## Les dates de la première promotion
+
+- **Début** : lundi 7 décembre 2026.
+- **Fin** : jeudi 24 décembre 2026, avec la présentation des projets.
+- **Horaire** : du lundi au jeudi, de 18 h à 20 h. Quatre séances par semaine, pendant trois semaines.
+- **Lieu** : Bamako. L'adresse de la salle est envoyée sur WhatsApp à chaque inscrit.
+- **Inscriptions** : jusqu'au vendredi 4 décembre 2026, ou dès que les 15 places sont prises.
 
 ## Le programme : 12 séances
 
@@ -32,8 +40,8 @@ Les cours en ligne de Minta Academy restent **gratuits**. La formation à Bamako
 ## Comment ça se passe
 
 1. **Tu te pré-inscris** avec le formulaire ci-dessous. C'est gratuit et sans engagement.
-2. **Nous t'écrivons sur WhatsApp** avec les dates et le lieu, à Bamako.
-3. **Tu confirmes ta place** en payant par Mobile Money ou en espèces, avec un reçu.
+2. **Nous t'écrivons sur WhatsApp** pour répondre à tes questions et te donner l'adresse de la salle.
+3. **Tu confirmes ta place** avant le 4 décembre en payant par Orange Money, Moov Money, Wave ou en espèces, avec un reçu.
 4. **Tu viens avec ton ordinateur portable** : chaque séance est pratique.
 
-La première promotion compte **15 places**. Les pré-inscrits reçoivent les dates en premier.
+La première promotion compte **15 places**. Elles sont attribuées dans l'ordre des paiements.
