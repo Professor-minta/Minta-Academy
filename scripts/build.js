@@ -9,7 +9,7 @@ const SITE_URL = 'https://mintaservices.com/academy/';
 const WHATSAPP = '22377295259';
 const EMAIL = 'academy@mintaservices.com';
 const GITHUB = 'https://github.com/Professor-minta/Minta-Academy';
-const VERSION = '5';
+const VERSION = '6';
 // Première promotion à Bamako : change ces lignes, puis lance « npm run build ».
 const PROMO = {
   debut: 'lundi 7 décembre 2026',
@@ -163,6 +163,7 @@ function home() {
     <p class="lead">Minta Academy est une formation <strong>gratuite et ouverte</strong>, en français, pensée pour le Mali. Dix modules pratiques, du nom de domaine jusqu'à une intelligence artificielle qui tourne sur ta machine, sans internet.</p>
     <div class="actions">
       <a class="btn btn-gold" href="${modules[0].slug}.html" data-resume>Commencer le module 1</a>
+      <a class="btn btn-line" href="bamako.html#inscription">M'inscrire à la formation à Bamako</a>
       <a class="btn btn-line" href="entreprises.html">Installer Mande-IA dans mon entreprise</a>
     </div>
     <p class="progress-line" hidden></p>
@@ -342,5 +343,8 @@ fs.writeFileSync(path.join(OUT, 'index.html'), home());
 modules.forEach((m, i) => fs.writeFileSync(path.join(OUT, `${m.slug}.html`), modulePage(m, i)));
 fs.writeFileSync(path.join(OUT, 'entreprises.html'), entreprises());
 fs.writeFileSync(path.join(OUT, 'bamako.html'), bamako());
+// L'adresse courte mintaservices.com/academy/bamako mène à la même page.
+fs.mkdirSync(path.join(OUT, 'bamako'), { recursive: true });
+fs.writeFileSync(path.join(OUT, 'bamako', 'index.html'), `<!doctype html><meta charset="utf-8"><title>Formation Minta Academy à Bamako</title><meta name="robots" content="noindex"><link rel="canonical" href="${SITE_URL}bamako.html"><meta http-equiv="refresh" content="0; url=../bamako.html"><script>location.replace('../bamako.html' + location.hash)</script><a href="../bamako.html">Formation Minta Academy à Bamako</a>\n`);
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['', ...modules.map((m) => `${m.slug}.html`), 'bamako.html', 'entreprises.html'].map((p) => `  <url><loc>${SITE_URL}${p}</loc></url>`).join('\n')}\n</urlset>\n`);
 console.log(`Site généré dans site/ : accueil, ${modules.length} modules, Bamako, entreprises.`);

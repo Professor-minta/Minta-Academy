@@ -39,7 +39,7 @@ Les cours en ligne de Minta Academy restent **gratuits**. La formation à Bamako
 
 ## Comment ça se passe
 
-1. **Tu te pré-inscris** avec le formulaire ci-dessous. C'est gratuit et sans engagement.
+1. **Tu te pré-inscris** avec le formulaire ci-dessous (adresse courte de cette page : mintaservices.com/academy/bamako). C'est gratuit et sans engagement.
 2. **Nous t'écrivons sur WhatsApp** pour répondre à tes questions et te donner l'adresse de la salle.
 3. **Tu confirmes ta place** avant le 4 décembre en payant par Orange Money, Moov Money, Wave ou en espèces, avec un reçu.
 4. **Tu viens avec ton ordinateur portable** : chaque séance est pratique.
