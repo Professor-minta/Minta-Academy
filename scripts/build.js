@@ -9,7 +9,7 @@ const SITE_URL = 'https://mintaservices.com/academy/';
 const WHATSAPP = '22377295259';
 const EMAIL = 'academy@mintaservices.com';
 const GITHUB = 'https://github.com/Professor-minta/Minta-Academy';
-const VERSION = '4';
+const VERSION = '5';
 // Première promotion à Bamako : change ces lignes, puis lance « npm run build ».
 const PROMO = {
   debut: 'lundi 7 décembre 2026',
@@ -21,6 +21,23 @@ const PROMO = {
 
 const escape = (text) => String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const slugify = (text) => String(text).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/<[^>]+>/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// La vidéo courte de la promotion : remplace les deux fichiers de site/assets/videos/ pour la changer.
+const promoVideo = () => `
+<section class="promo-video" aria-labelledby="promo-video-titre">
+  <video controls playsinline muted preload="none" width="720" height="1280" poster="assets/videos/formation-bamako-decembre-2026.webp" aria-label="La formation Minta Academy à Bamako : dates, horaire, prix et lieu">
+    <source src="assets/videos/formation-bamako-decembre-2026.mp4" type="video/mp4">
+  </video>
+  <div>
+    <h2 id="promo-video-titre">La formation en 22 secondes</h2>
+    <p>Les dates, l'horaire, le prix et le lieu de la première promotion, en une courte vidéo à partager.</p>
+    <ul class="facts">
+      <li>Du 7 au 24 décembre 2026</li>
+      <li>Lundi au jeudi, 18 h à 20 h</li>
+      <li>${PROMO.prix}, étudiants ${PROMO.prixEtudiant}</li>
+      <li>Bamako</li>
+    </ul>
+  </div>
+</section>`;
 const wa = (message) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
 
 function frontMatter(source) {
@@ -166,6 +183,7 @@ function home() {
   </div>
   <a class="btn btn-gold" href="bamako.html">Voir le programme et se pré-inscrire</a>
 </section>
+${promoVideo()}
 
 <section class="parcours" aria-labelledby="parcours-titre">
   <div class="section-head">
@@ -284,6 +302,7 @@ function bamako() {
       <a class="btn btn-line" href="${wa(question)}" target="_blank" rel="noopener">Poser une question sur WhatsApp</a>
     </div>
   </header>
+${promoVideo()}
   <div class="prose prose-ent">
 ${html}
   </div>

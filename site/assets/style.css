@@ -215,3 +215,11 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.1; letter-spacing: -0.0
 @media (min-width: 720px) { .form { grid-template-columns: 1fr 1fr; } .form .btn, .form-note { grid-column: 1 / -1; } }
 @media (max-width: 560px) { .nav a[href^="https://github.com"] { display: none; } }
 @media (max-width: 400px) { .top { gap: 10px; } .nav { gap: 2px; } .nav a { padding: 8px 8px; font-size: 14.5px; } }
+
+.promo-video { max-width: 1240px; margin: clamp(32px, 5vw, 56px) auto; padding: 0 var(--gutter); display: grid; gap: 28px; align-items: center; }
+.ent .promo-video { padding: 0; margin: 40px 0 0; }
+.promo-video video { display: block; width: 100%; max-width: 300px; height: auto; aspect-ratio: 9 / 16; border-radius: 18px; background: #061034; object-fit: cover; }
+.promo-video h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
+.promo-video p { color: var(--mute); max-width: 34em; margin: 12px 0 20px; }
+.promo-video .facts { margin-bottom: 0; }
+@media (min-width: 760px) { .promo-video { grid-template-columns: 300px 1fr; gap: 40px; } }
