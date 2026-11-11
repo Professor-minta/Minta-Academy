@@ -7,9 +7,9 @@ const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'site');
 const SITE_URL = 'https://mintaservices.com/academy/';
 const WHATSAPP = '22377295259';
-const EMAIL = 'academy@mintaservices.com';
+const EMAIL = 'professorminta@gmail.com';
 const GITHUB = 'https://github.com/Professor-minta/Minta-Academy';
-const VERSION = '6';
+const VERSION = '7';
 // Première promotion à Bamako : change ces lignes, puis lance « npm run build ».
 const PROMO = {
   debut: 'lundi 7 décembre 2026',
